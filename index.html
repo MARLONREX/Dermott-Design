@@ -371,19 +371,28 @@
     </div>
     <br>
     <div id="featured-text" class="featured-text">Featured work</div>
-    <script>
-        window.addEventListener("scroll", function() {
-            var text = document.getElementById("featured-text");
-            var textPosition = text.offsetTop;
-            var scrollPosition = window.scrollY;
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const greyBox = document.querySelector(".grey-box");
 
-            if (scrollPosition >= textPosition - 50) {
-                text.classList.add("sticky");
-            } else {
-                text.classList.remove("sticky");
-            }
-        });
-    </script>
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const imageUrl = greyBox.getAttribute("data-bg");
+                        greyBox.style.backgroundImage = `url('${imageUrl}')`;
+
+                        greyBox.classList.add("visible");
+                        observer.unobserve(greyBox);
+                    }
+                });
+            },
+            { rootMargin: "200px" } 
+        );
+
+        observer.observe(greyBox);
+    });
+</script>
     <br>
     <br>
     <br>
