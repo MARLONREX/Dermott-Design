@@ -337,14 +337,14 @@
                 (entries, observer) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
-                            // Load the background image dynamically
+                           
                             const imageUrl = greyBox.getAttribute("data-bg");
-                            greyBox.style.backgroundImage = url('${imageUrl}');
+                            greyBox.style.backgroundImage = url('${x9.png}');
 
-                            // Add the visible class to trigger fade-in
+                           
                             greyBox.classList.add("visible");
 
-                            // Stop observing after loading
+                           
                             observer.unobserve(greyBox);
                         }
                     });
@@ -361,7 +361,7 @@
         <br>
         <br>
         <p class="small-text">
-           I’m an Aspiring Designer, looking for small projects to practice my constant learning.
+           I’m an Aspiring Designer, looking for small projects to practice my constant learning. Here is a showcase of My works.
         </p>
     </div>
     <br>
