@@ -122,69 +122,18 @@
             font-weight: normal;
         }
         
-        .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
-.grey-box {
-     background-image: url('CV.jpg');
-    width: calc(110% - 100px);
-    height: 800px;
+      
+       .cv-image-box {
+    width: 1900px;
+    height: 3000px;
+    background-image: url('CV.jpg');
     background-size: cover;
     background-position: center;
-    margin-top: -200px;
-    transition: box-shadow 0.3s;
-    cursor: pointer;
-    background-color: #f0f0f0; 
-    opacity: 0; 
-    transition: opacity 2s ease-in-out; 
-    
+    margin: 40px auto;
+    border: 1px solid #ccc;
 }
-
-.small-text {
-    font-size: 16px;
-}
-
-.grey-box.visible {
-    opacity: 1; 
-}
-        .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
       
-        .featured-text {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            margin-left: 100px;
-            margin-top: 20px;
-            position: relative;
-            transition: all 0.3s;
-        }
-        .subgraph {
-            margin-left: 250px;
-            margin-right: 250px;
-            font-size: 30px;
-            font-weight: normal;
-            color:#27292B
-        }
-        .subgraph-2 {
-            margin-left: 250px;
-            margin-right: 250px;
-            font-size: 26px;
-            font-weight: normal;
-            color:#27292B
-        }
-        .subgraph-3 {
-            margin-left: 250px;
-            margin-right: 250px;
-            font-size: 30px;
-            font-weight: normal;
-            color:#27292B
-        }
-        .subgraph-4 {
-            margin-left: 250px;
-            margin-right: 250px;
-            font-size: 26px;
-            font-weight: normal;
-            color:#27292B
-        }
-      
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -283,19 +232,12 @@
         
         <h1>Design Rendering</h1>
    </div>
-    <div class="grey-box"></div>
 
-    <div class="subgraph">
-        <p>FIELD MERGING</p>
-        </div>
-    <div class="subgraph-2">
-        <p></p>
-    <div class="subgraph-3">
-        <p>WHY</p>
-        </div>
-    <div class="subgraph-4">
-        <p> </p>
-    </div>
+
+<a href="CV.jpg" target="_blank">
+  <div class="cv-image-box"></div>
+</a>
+    
    <div class="grid-container">
   <a href="PWB.html" target="_blank">
     <div class="grid-box grid-box-1"></div>
