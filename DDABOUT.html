@@ -123,7 +123,30 @@
         }
         
         .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
-        
+.grey-box {
+     background-image: url('HLB2.png');
+    width: calc(110% - 100px);
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+    margin-top: -200px;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+    background-color: #f0f0f0; 
+    opacity: 0; 
+    transition: opacity 2s ease-in-out; 
+    
+}
+
+.small-text {
+    font-size: 16px;
+}
+
+.grey-box.visible {
+    opacity: 1; 
+}
+        .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
+      
         .featured-text {
             font-size: 20px;
             font-weight: bold;
