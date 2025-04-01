@@ -163,38 +163,30 @@
         }
       
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
-    width: calc(200% - 60px);
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 30px 0; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
-
 
 .grid-box {
-    width: 100%;
-    height: 300px; 
-    background-color: #D3D3D3;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: grayscale(100%); 
-    transition: filter 0.5s ease-in-out, transform 0.3s ease-in-out; 
-    cursor: pointer;
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #ccc;
 }
 
-
-.grid-box:hover {
-    filter: grayscale(0%); 
-    transform: scale(1.02); 
+/* Set individual backgrounds */
+.grid-box-1 {
+  background-image: url('PWB4.jpg');
+}
+.grid-box-2 {
+  background-image: url('DH1.jpg');
+}
+.grid-box-3 {
+  background-image: url('BLP1.jpg');
 }
 
-/* Individual boxes with unique images */
-.grid-box-1 { background-image: url('CONYGAR QUARRY WORKSHOP REALISTIC ELEVATION.png');}
-.grid-box-2 { background-image: url('DH1.jpg'); }
-.grid-box-3 { background-image: url('BLP1.jpg'); }
 
         
 .bottom-grey-box {
@@ -329,11 +321,17 @@ Key Skills
     <div class="subgraph-4">
         <p> </p>
     </div>
-    <div class="grid-container">
-        <div class="grid-box grid-box-1"></div>
-        <div class="grid-box grid-box-2"></div>
-        <div class="grid-box grid-box-3"></div>
-        </div>
+   <div class="grid-container">
+  <a href="PWB.html" target="_blank">
+    <div class="grid-box grid-box-1"></div>
+  </a>
+  <a href="PDU.html" target="_blank">
+    <div class="grid-box grid-box-2"></div>
+  </a>
+  <a href="PDE.html" target="_blank">
+    <div class="grid-box grid-box-3"></div>
+  </a>
+</div>
     <br><br>
     <div class="bottom-grey-box">
         <!-- Copyright text in the lower-left corner -->
