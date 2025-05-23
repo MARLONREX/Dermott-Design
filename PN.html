@@ -39,20 +39,22 @@
             cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20"%3E%3Ccircle cx="10" cy="10" r="10" fill="%23333" /%3E%3C/svg%3E'), auto;
         }
 
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            font-size: 20px;
-            background-color: #FFFFFF;
-            z-index: 1000;
-            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-            height: 60px;
-        }
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0); /* transparent */
+    border: 3px solid white;
+    z-index: 1000;
+    height: 60px;
+    backdrop-filter: blur(6px); /* Optional: for a frosted-glass effect */
+    -webkit-backdrop-filter: blur(6px); /* Safari support */
+}
 
         .header a {
             color: #333;
