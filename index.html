@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <htmlxxxxxx>
   <head>
-<head>
-  <meta charset="utf-7">
+    <meta charset="utf-7">
     <meta-name="viewport"-content="witdth=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="mystyle.css">
-    <title>LimiT</title>
+    <title>Dermott Design</title>
     <style>
-</head>
+        
     .header {
             margin-top: 0px;
             position: fixed;
@@ -43,15 +42,15 @@
 
 .header {
     position: fixed;
-    top: 0; /* moved to top of page */
+    top: 150px; /* 2× distance from top */
     left: 0;
     width: 100%;
     display: flex;
     align-items: center;
     padding: 5px;
     font-size: 20px;
-    background-color: rgba(255, 255, 255, 0); /* still transparent */
-    border: 3px solid white; /* thinner lines */
+    background-color: rgba(255, 255, 255, 0); /* fully transparent */
+    border: 6px solid white; /* 2× thickness */
     z-index: 1000;
     height: 60px;
 }
@@ -114,7 +113,7 @@
     width: 100%;
     height: 100px;
     background-color: white;
-    margin-top: 40px;
+    margin-top: 60px;
     margin-left: 40px;
 }
         .Title {
@@ -395,7 +394,7 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         const imageUrl = greyBox.getAttribute("data-bg");
-                        greyBox.style.backgroundImage = `url('${imageUrl}')`;
+                        greyBox.style.backgroundImage = url('${imageUrl}');
 
                         greyBox.classList.add("visible");
                         observer.unobserve(greyBox);
