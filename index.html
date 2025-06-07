@@ -81,18 +81,22 @@
 
 .header a:nth-child(2) {
     margin-left: 80px; 
+    color: #FFFFFF
 }
 
 .header a:nth-child(3) {
     margin-left: 80px; 
+    color: #FFFFFF
 }
 
 .header a:nth-child(4) {
     margin-left: 80px;
+    color: #FFFFFF
 }
 
 .header a:nth-child(5) {
     margin-left: 80px;
+    color: #FFFFFF
 }
 
 .header a:nth-child(2),
@@ -143,6 +147,19 @@
   background-color: #f0f0f0;
   opacity: 0;
   position: relative; /* allow positioning child elements */
+  overflow: hidden; /* make sure overlay stays contained */
+}
+
+.grey-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* 20% white overlay */
+  z-index: 1;
+  pointer-events: none; /* so it doesn't interfere with hover/click */
 }
 
 .grey-box.visible {
@@ -152,7 +169,6 @@
 .grey-box:hover {
   box-shadow: 0 0 15px #D3D3D3;
 }
-
 .grey-box .subgraph {
   position: absolute;
   bottom: 30px;
