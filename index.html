@@ -4,6 +4,7 @@
     <meta charset="utf-7">
     <meta-name="viewport"-content="witdth=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="mystyle.css">
     <title>Dermott Design</title>
     <style>
         
@@ -21,9 +22,7 @@
             width: 25%;
             height: auto; 
             font-size: 35px;
-            color: #FF2800;
-            font-family: 'Univers', sans-serif;
-           font-weight: bold;
+            color: #27292B;
         }
 
         body {
@@ -33,7 +32,7 @@
             cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
         }
 
-       
+        /* Large Cursor for Hover */
         .header a:hover,
         .grey-box:hover,
         .featured-grey-box:hover,
@@ -41,22 +40,20 @@
             cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20"%3E%3Ccircle cx="10" cy="10" r="10" fill="%23333" /%3E%3C/svg%3E'), auto;
         }
 
-.header {
-    position: relative; /* changed from fixed */
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    font-size: 13.33px; /* reduced to 2/3 */
-    background-color: rgba(255, 255, 255, 0); 
-    border: 3px solid white; 
-    z-index: 1000;
-    height: 60px;
-    font-family: 'Univers', sans-serif;
-    font-weight: bold;
-}
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            font-size: 20px;
+            background-color: #FFFFFF;
+            z-index: 1000;
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+            height: 60px;
+        }
 
         .header a {
             color: #333;
@@ -72,7 +69,7 @@
         .header a:first-child { 
     margin-left: 40px; 
     margin-right: auto; 
-    color: #FF2800; 
+    color: #575757; 
 }
 
 .header {
@@ -82,22 +79,18 @@
 
 .header a:nth-child(2) {
     margin-left: 80px; 
-    color: #FFFFFF
 }
 
 .header a:nth-child(3) {
     margin-left: 80px; 
-    color: #FFFFFF
 }
 
 .header a:nth-child(4) {
     margin-left: 80px;
-    color: #FFFFFF
 }
 
 .header a:nth-child(5) {
     margin-left: 80px;
-    color: #FFFFFF
 }
 
 .header a:nth-child(2),
@@ -119,7 +112,7 @@
     width: 100%;
     height: 100px;
     background-color: white;
-    margin-top: 40px;
+    margin-top: 60px;
     margin-left: 40px;
 }
         .Title {
@@ -136,50 +129,29 @@
             font-weight: normal;
         }
         
-.grey-box {
-  background-image: none; /* Start blank, set via JS */
-  width: calc(110% - 100px);
-  height: 800px; /* increased from 800px */
-  background-size: cover;
-  background-position: center;
-  margin-top: -200px;
-  transition: box-shadow 0.3s, opacity 2s ease-in-out;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  opacity: 0;
-  position: relative; /* allow positioning child elements */
-  overflow: hidden; /* make sure overlay stays contained */
+        .grey-box {
+     background-image: url('HLB2.png');
+    width: calc(110% - 100px);
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+    margin-top: -200px;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+    background-color: #f0f0f0; 
+    opacity: 0; 
+    transition: opacity 2s ease-in-out; 
+    
 }
 
-.grey-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.2); /* 20% white overlay */
-  z-index: 1;
-  pointer-events: none; /* so it doesn't interfere with hover/click */
+.small-text {
+    font-size: 16px;
 }
 
 .grey-box.visible {
-  opacity: 1;
+    opacity: 1; 
 }
-
-.grey-box:hover {
-  box-shadow: 0 0 15px #D3D3D3;
-}
-.grey-box .subgraph {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  color: white;
-  font-size: 20px;
-  max-width: 500px;
-  line-height: 1.4;
-  font-weight: normal;
-}
+        .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
         
         .featured-text {
             font-size: 20px;
@@ -217,9 +189,9 @@
         
         .featured-grey-box {
             width: 55%;
-            height: 300px;
+            height: 270px;
             background-color: #D3D3D3;
-            background-image: url('CITY.jpg');
+            background-image: url('HLB2.png');
             border-radius: 10px;
             margin-right: 50px;
             padding: 20px;
@@ -312,7 +284,7 @@
     box-shadow: 0 0 15px #D3D3D3;
 }
 
-
+/* Footer navigation container */
 .footer-nav {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -323,7 +295,7 @@
     right: 200px; 
 }
 
-
+/* Footer navigation links */
 .footer-nav a {
     color: white;
     text-decoration: none;
@@ -359,53 +331,54 @@
  
 
 <body>
-     <div class="header">
-    <div class="logo">
-      <a href="index.html">LiMiT</a>
+    <div class="header">
+        <div class="logo">
+        <a href="index.html">Dermott Design</a>
+        </div>
+        <a href="DDABOUT.html">About</a>
+        <a href="DDWORK.html">Work</a>
+        <a href="DDNEWS.html">News</a>
+        <a href="DDPARTNERS.html">Contact</a>
     </div>
-    <a href="DDABOUT.html">About</a>
-    <a href="DDWORK.html">Work</a>
-    <a href="DDNEWS.html">News</a>
-    <a href="DDPARTNERS.html">Contact</a>
-  </div>
+    <div class="white-box"></div>
+  
+    <div class="grey-box" data-bg="HLB2.png"></div>
 
-  <div class="white-box"></div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const greyBox = document.querySelector(".grey-box");
 
-  <!-- Updated grey-box -->
-  <div class="grey-box" data-bg="CITY.jpg">
-  <div class="subgraph">
-    We are a multidisciplinary collective based in Newcastle, founded by architecture and urban planning students. LIMIT exists to explore, test, and stretch the boundaries of the built environment—from physical spaces to conceptual systems.
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                           
+                            const imageUrl = greyBox.getAttribute("data-bg");
+                            greyBox.style.backgroundImage = url('${image.Url;}');
+                          
 
+                           
+                            greyBox.classList.add("visible");
 
-  </div>
-</div>
+                           
+                            observer.unobserve(greyBox);
+                        }
+                    });
+                },
+                { rootMargin: "200px" } 
+            );
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const greyBox = document.querySelector(".grey-box");
-
-      const observer = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const imageUrl = greyBox.getAttribute("data-bg");
-              greyBox.style.backgroundImage = url('${imageUrl}');
-
-              greyBox.classList.add("visible");
-
-              observer.unobserve(greyBox);
-            }
-          });
-        },
-        { rootMargin: "200px" }
-      );
-
-      observer.observe(greyBox);
-    });
-  </script>
-
-
-
+            observer.observe(greyBox);
+        });
+    </script>
+      
+   
+    <div class="subgraph">
+        <br>
+        <br>
+        <p class="small-text">
+           I’m an Aspiring Designer, looking for small projects to practice my constant learning. Here is a showcase of My works.
            
         </p>
     </div>
