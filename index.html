@@ -302,28 +302,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
   const greyBox = document.querySelector(".grey-box");
 
-  // Calculate the bottom of the CITY.jpg box once on load
-  let stopPoint = greyBox.offsetTop + greyBox.offsetHeight;
-
-  window.addEventListener("scroll", () => {
+  function updateHeaderPosition() {
+    const cityBottom = greyBox.offsetTop + greyBox.offsetHeight;
     const scrollY = window.scrollY;
 
-    if (scrollY < stopPoint) {
-      // Scrolls naturally with page
-      header.style.position = "static"; // natural flow
-    } else {
-      // Sticks to top once CITY.jpg is passed
+    if (scrollY < cityBottom - header.offsetHeight) {
+      // Stick to top of the page
       header.style.position = "fixed";
       header.style.top = "0";
-      header.style.left = "0";
-      header.style.width = "100%";
+      header.style.opacity = "1";
+      header.style.pointerEvents = "auto";
+    } else {
+      // Once past CITY.jpg, hide header completely
+      header.style.position = "absolute";
+      header.style.top = `${cityBottom - header.offsetHeight}px`;
+      header.style.opacity = "0";
+      header.style.pointerEvents = "none";
     }
-  });
+  }
 
-  // Optional: recalculate on resize
-  window.addEventListener("resize", () => {
-    stopPoint = greyBox.offsetTop + greyBox.offsetHeight;
-  });
+  window.addEventListener("scroll", updateHeaderPosition);
+  window.addEventListener("resize", updateHeaderPosition);
+  updateHeaderPosition(); // Run on load
 });
 </script>
     <div class="white-box"></div>
