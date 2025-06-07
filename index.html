@@ -129,28 +129,22 @@
             font-weight: normal;
         }
         
-        .grey-box {
-     background-image: url('CITY.jpg');
-    width: calc(110% - 100px);
-    height: 800px;
-    background-size: cover;
-    background-position: center;
-    margin-top: -200px;
-    transition: box-shadow 0.3s;
-    cursor: pointer;
-    background-color: #f0f0f0; 
-    opacity: 0; 
-    transition: opacity 2s ease-in-out; 
-    
-}
+.grey-box {
+      background-image: none; /* Start blank, set via JS */
+      width: calc(110% - 100px);
+      height: 800px;
+      background-size: cover;
+      background-position: center;
+      margin-top: -200px;
+      transition: box-shadow 0.3s, opacity 2s ease-in-out;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      opacity: 0; /* Start hidden */
+    }
 
-.small-text {
-    font-size: 16px;
-}
-
-.grey-box.visible {
-    opacity: 1; 
-}
+    .grey-box.visible {
+      opacity: 1;
+    }
         .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
         
         .featured-text {
@@ -331,49 +325,47 @@
  
 
 <body>
-    <div class="header">
-        <div class="logo">
-        <a href="index.html">LiMiT</a>
-        </div>
-        <a href="DDABOUT.html">About</a>
-        <a href="DDWORK.html">Work</a>
-        <a href="DDNEWS.html">News</a>
-        <a href="DDPARTNERS.html">Contact</a>
+     <div class="header">
+    <div class="logo">
+      <a href="index.html">LiMiT</a>
     </div>
-    <div class="white-box"></div>
-  
-    <div class="grey-box" data-bg="CITY.jpg"></div>
+    <a href="DDABOUT.html">About</a>
+    <a href="DDWORK.html">Work</a>
+    <a href="DDNEWS.html">News</a>
+    <a href="DDPARTNERS.html">Contact</a>
+  </div>
 
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const greyBox = document.querySelector(".grey-box");
+  <div class="white-box"></div>
 
-            const observer = new IntersectionObserver(
-                (entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                           
-                            const imageUrl = greyBox.getAttribute("data-bg");
-                            greyBox.style.backgroundImage = url('${image.Url;}');
-                          
+  <!-- Updated grey-box -->
+  <div class="grey-box" data-bg="CITY.jpg"></div>
 
-                           
-                            greyBox.classList.add("visible");
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const greyBox = document.querySelector(".grey-box");
 
-                           
-                            observer.unobserve(greyBox);
-                        }
-                    });
-                },
-                { rootMargin: "200px" } 
-            );
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const imageUrl = greyBox.getAttribute("data-bg");
+              greyBox.style.backgroundImage = `url('${imageUrl}')`;
 
-            observer.observe(greyBox);
-        });
-    </script>
-      
-   
+              greyBox.classList.add("visible");
+
+              observer.unobserve(greyBox);
+            }
+          });
+        },
+        { rootMargin: "200px" }
+      );
+
+      observer.observe(greyBox);
+    });
+  </script>
+
+  <!-- ... (rest of your page remains unchanged) ... -->
+v
     <div class="subgraph">
         <br>
         <br>
