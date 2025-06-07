@@ -41,22 +41,21 @@
         }
 
 .header {
-      position: fixed; /* Always fixed at top initially */
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      padding: 5px 15px;
-      font-size: 28px;
-      background-color: transparent;
-      z-index: 1000;
-      transition: top 0.3s ease, opacity 0.3s ease;
-      color: white;
-      font-family: "Univers", sans-serif;
-      font-weight: bold;
-    }
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-start; /* Align text at top of header */
+  padding: 20px 15px 5px 15px; /* 20px space from top */
+  font-size: 28px;
+  background-color: transparent;
+  z-index: 1000;
+  transition: top 0.3s ease, opacity 0.3s ease;
+  color: white;
+  font-family: "Univers", sans-serif;
+  font-weight: bold;
+}
     .header a {
       color: white;
       text-decoration: none;
