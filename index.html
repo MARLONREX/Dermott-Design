@@ -43,18 +43,20 @@
         }
 
 .header {
-    position: fixed;
-    top: 0; 
+    position: relative; /* changed from fixed */
+    top: 0;
     left: 0;
     width: 100%;
     display: flex;
     align-items: center;
     padding: 5px;
-    font-size: 20px;
+    font-size: 13.33px; /* reduced to 2/3 */
     background-color: rgba(255, 255, 255, 0); 
     border: 3px solid white; 
     z-index: 1000;
     height: 60px;
+    font-family: 'Univers', sans-serif;
+    font-weight: bold;
 }
 
         .header a {
