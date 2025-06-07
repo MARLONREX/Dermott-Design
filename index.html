@@ -40,52 +40,51 @@
             cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20"%3E%3Ccircle cx="10" cy="10" r="10" fill="%23333" /%3E%3C/svg%3E'), auto;
         }
 
-/* Updated Header CSS */
 .header {
-  position: absolute; /* Initially absolute */
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 5px 15px;
-  font-size: 28px; /* Twice current font size */
-  background-color: transparent; /* Transparent background */
-  z-index: 1000;
-  transition: top 0.3s ease, opacity 0.3s ease;
-  color: white;
-  font-family: "Univers", sans-serif;
-  font-weight: bold;
-}
+      position: fixed; /* Always fixed at top initially */
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 5px 15px;
+      font-size: 28px;
+      background-color: transparent;
+      z-index: 1000;
+      transition: top 0.3s ease, opacity 0.3s ease;
+      color: white;
+      font-family: "Univers", sans-serif;
+      font-weight: bold;
+    }
 
-.header a {
-  color: white;
-  text-decoration: none;
-  font-size: 28px; /* Twice current font size */
-  font-family: "Univers", sans-serif;
-  font-weight: bold;
-  margin-left: 80px;
-  transition: transform 0.3s ease;
-}
+    .header a {
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+      font-family: "Univers", sans-serif;
+      font-weight: bold;
+      margin-left: 80px;
+      transition: transform 0.3s ease;
+    }
 
-.header a:first-child {
-  margin-left: 40px;
-  margin-right: auto;
-  color: #FF2800;
-  font-weight: bold;
-  font-size: 40px;
-  font-family: "Univers", sans-serif;
-  user-select: none;
-}
+    .header a:first-child {
+      margin-left: 40px;
+      margin-right: auto;
+      color: #FF2800;
+      font-weight: bold;
+      font-size: 40px;
+      user-select: none;
+    }
 
-.header a:hover {
-  transform: translateY(5px);
-}
+    .header a:hover {
+      transform: translateY(5px);
+    }
 
-/* JS will handle .sticky class for fixed position */
-.header {
-    display: flex;
-    gap: 90px;
+    .header {
+      display: flex;
+      gap: 90px;
+    }
+
 }
 
 .header a:nth-child(2) {
@@ -135,18 +134,20 @@
         }
         
         .grey-box {
-    width: calc(110% - 100px);
-    height: 1100px;
-    background-size: cover;
-    background-position: center;
-    margin-top: -200px;
-    transition: box-shadow 0.3s;
-    cursor: pointer;
-    background-color: #f0f0f0; 
-    opacity: 0; 
-    transition: opacity 2s ease-in-out; 
-    
-}
+      width: calc(110% - 100px);
+      height: 1100px;
+      background-size: cover;
+      background-position: center;
+      margin-top: -200px;
+      transition: box-shadow 0.3s, opacity 2s ease-in-out;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      opacity: 0;
+    }
+
+    .grey-box.visible {
+      opacity: 1;
+    }
 
 .small-text {
     font-size: 16px;
@@ -217,10 +218,10 @@
       display: block;
     }
 
-      .image-box:hover {
-  box-shadow: 0 0 15px 3px red;
-  transition: box-shadow 0.3s ease;
-}
+    .image-box:hover {
+      box-shadow: 0 0 15px 3px red;
+      transition: box-shadow 0.3s ease;
+    }
     /* Lightbox overlay styles */
     .lightbox {
       position: fixed;
@@ -292,44 +293,61 @@
 <body>
   
   
- <div class="header">
-  <div class="logo">
-    <a href="index.html">LimiT</a>
+<div class="header">
+    <div class="logo"><a href="index.html">LimiT</a></div>
+    <a href="DDABOUT.html">About</a>
+    <a href="DDWORK.html">Work</a>
+    <a href="DDNEWS.html">News</a>
+    <a href="DDPARTNERS.html">Contact</a>
   </div>
-  <a href="DDABOUT.html">About</a>
-  <a href="DDWORK.html">Work</a>
-  <a href="DDNEWS.html">News</a>
-  <a href="DDPARTNERS.html">Contact</a>
-</div> 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector(".header");
-  const greyBox = document.querySelector(".grey-box");
 
-  function updateHeaderPosition() {
-    const cityBottom = greyBox.offsetTop + greyBox.offsetHeight;
-    const scrollY = window.scrollY;
+  <div class="white-box"></div>
+  <div class="grey-box" data-bg="CITY.jpg"></div>
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.querySelector(".header");
+      const greyBox = document.querySelector(".grey-box");
 
-    if (scrollY < cityBottom - header.offsetHeight) {
-      // Stick to top of the page
-      header.style.position = "fixed";
-      header.style.top = "0";
-      header.style.opacity = "1";
-      header.style.pointerEvents = "auto";
-    } else {
-      // Once past CITY.jpg, hide header completely
-      header.style.position = "absolute";
-      header.style.top = `${cityBottom - header.offsetHeight}px`;
-      header.style.opacity = "0";
-      header.style.pointerEvents = "none";
-    }
-  }
+      function updateHeaderPosition() {
+        const greyBoxBottom = greyBox.offsetTop + greyBox.offsetHeight;
+        const scrollY = window.scrollY;
 
-  window.addEventListener("scroll", updateHeaderPosition);
-  window.addEventListener("resize", updateHeaderPosition);
-  updateHeaderPosition(); // Run on load
-});
-</script>
+        if (scrollY + header.offsetHeight < greyBoxBottom) {
+          // Stick header to top of viewport
+          header.style.position = "fixed";
+          header.style.top = "0";
+          header.style.opacity = "1";
+          header.style.pointerEvents = "auto";
+        } else {
+          // Place header just above the bottom of grey-box
+          header.style.position = "absolute";
+          header.style.top = `${greyBoxBottom - header.offsetHeight}px`;
+          header.style.opacity = "1";
+          header.style.pointerEvents = "auto";
+        }
+      }
+
+      window.addEventListener("scroll", updateHeaderPosition);
+      window.addEventListener("resize", updateHeaderPosition);
+      updateHeaderPosition();
+
+      // IntersectionObserver to lazy load background image of grey-box
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const imageUrl = greyBox.getAttribute("data-bg");
+              greyBox.style.backgroundImage = `url('${imageUrl}')`;
+              greyBox.classList.add("visible");
+              observer.unobserve(greyBox);
+            }
+          });
+        },
+        { rootMargin: "200px" }
+      );
+      observer.observe(greyBox);
+    });
+  </script>
     <div class="white-box"></div>
   
     <div class="grey-box" data-bg="CITY.jpg"></div>
