@@ -302,24 +302,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
   const greyBox = document.querySelector(".grey-box");
 
-  function getStopPoint() {
-    const rect = greyBox.getBoundingClientRect();
-    return window.scrollY + rect.top + greyBox.offsetHeight;
-  }
+  // Calculate the bottom of the CITY.jpg box once on load
+  let stopPoint = greyBox.offsetTop + greyBox.offsetHeight;
 
   window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
-    const stopPoint = getStopPoint();
 
-    if (scrollY < stopPoint - header.offsetHeight) {
-      // Header scrolls with the page
-      header.style.position = "absolute";
-      header.style.top = `${scrollY}px`;
+    if (scrollY < stopPoint) {
+      // Scrolls naturally with page
+      header.style.position = "static"; // natural flow
     } else {
-      // Header sticks to the top after CITY.jpg ends
+      // Sticks to top once CITY.jpg is passed
       header.style.position = "fixed";
       header.style.top = "0";
+      header.style.left = "0";
+      header.style.width = "100%";
     }
+  });
+
+  // Optional: recalculate on resize
+  window.addEventListener("resize", () => {
+    stopPoint = greyBox.offsetTop + greyBox.offsetHeight;
   });
 });
 </script>
