@@ -130,22 +130,37 @@
         }
         
 .grey-box {
-      background-image: none; /* Start blank, set via JS */
-      width: calc(110% - 100px);
-      height: 800px;
-      background-size: cover;
-      background-position: center;
-      margin-top: -200px;
-      transition: box-shadow 0.3s, opacity 2s ease-in-out;
-      cursor: pointer;
-      background-color: #f0f0f0;
-      opacity: 0; /* Start hidden */
-    }
+  background-image: none; /* Start blank, set via JS */
+  width: calc(110% - 100px);
+  height: 1000px; /* increased from 800px */
+  background-size: cover;
+  background-position: center;
+  margin-top: -200px;
+  transition: box-shadow 0.3s, opacity 2s ease-in-out;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  opacity: 0;
+  position: relative; /* allow positioning child elements */
+}
 
-    .grey-box.visible {
-      opacity: 1;
-    }
-        .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
+.grey-box.visible {
+  opacity: 1;
+}
+
+.grey-box:hover {
+  box-shadow: 0 0 15px #D3D3D3;
+}
+
+.grey-box .subgraph {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: white;
+  font-size: 20px;
+  max-width: 500px;
+  line-height: 1.4;
+  font-weight: normal;
+}
         
         .featured-text {
             font-size: 20px;
@@ -338,7 +353,11 @@
   <div class="white-box"></div>
 
   <!-- Updated grey-box -->
-  <div class="grey-box" data-bg="CITY.jpg"></div>
+  <div class="grey-box" data-bg="CITY.jpg">
+  <div class="subgraph">
+    I’m an Aspiring Designer, looking for small projects to practice my constant learning. Here is a showcase of my works.
+  </div>
+</div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -364,13 +383,8 @@
     });
   </script>
 
-  <!-- ... (rest of your page remains unchanged) ... -->
-v
-    <div class="subgraph">
-        <br>
-        <br>
-        <p class="small-text">
-           I’m an Aspiring Designer, looking for small projects to practice my constant learning. Here is a showcase of My works.
+
+
            
         </p>
     </div>
