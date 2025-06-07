@@ -181,17 +181,16 @@
   margin: 0 30px;
 }
 
-/* Remove .image-row or make it vertical */
 .image-row {
   display: flex;
-  flex-direction: column; /* stack vertically */
   gap: 20px;
+  /* no vertical stacking here */
 }
 
 .image-box {
-  width: 100%; /* take full width */
-  height: auto; /* make height dynamic */
-  min-height: 100px; /* minimum height */
+  flex: 1;
+  height: auto; /* allow height to be set dynamically */
+  min-height: 100px;
   overflow: hidden;
   border: 1px solid #ccc;
   border-radius: 1px;
@@ -201,6 +200,8 @@
   align-items: center;
   cursor: pointer;
 }
+
+/* Allow individual height inline or via class */
 
 /* Allow setting individual heights via inline styles or classes */
     .image-box img {
