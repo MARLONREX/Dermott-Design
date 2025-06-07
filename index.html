@@ -298,44 +298,30 @@
   <a href="DDPARTNERS.html">Contact</a>
 </div> 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const header = document.querySelector(".header");
-    const featuredText = document.getElementById("featured-text");
-    let lastScrollY = window.scrollY;
-    let ticking = false;
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector(".header");
+  const greyBox = document.querySelector(".grey-box");
 
-    function onScroll() {
-      const scrollY = window.scrollY;
-      const featuredTextTop = featuredText.getBoundingClientRect().top + window.scrollY;
+  function getStopPoint() {
+    const rect = greyBox.getBoundingClientRect();
+    return window.scrollY + rect.top + greyBox.offsetHeight;
+  }
 
-      // When scrolling down and header reaches featured-text top, fix header at featured-text top
-      if (scrollY + header.offsetHeight >= featuredTextTop) {
-        header.style.position = "absolute";
-        header.style.top = `${featuredTextTop - header.offsetHeight}px`;
-        header.style.opacity = "0"; // Hide header as it scrolls past CITY.jpg
-      } else if (scrollY > 0) {
-        // Header scrolls with page but visible when above featured-text
-        header.style.position = "fixed";
-        header.style.top = "0";
-        header.style.opacity = "1";
-      } else {
-        // Top of page
-        header.style.position = "fixed";
-        header.style.top = "0";
-        header.style.opacity = "1";
-      }
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const stopPoint = getStopPoint();
 
-      lastScrollY = scrollY;
-      ticking = false;
+    if (scrollY < stopPoint - header.offsetHeight) {
+      // Header scrolls with the page
+      header.style.position = "absolute";
+      header.style.top = `${scrollY}px`;
+    } else {
+      // Header sticks to the top after CITY.jpg ends
+      header.style.position = "fixed";
+      header.style.top = "0";
     }
-
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
-      }
-    });
   });
+});
 </script>
     <div class="white-box"></div>
   
