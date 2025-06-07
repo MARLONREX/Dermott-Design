@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Project Grid</title>
   <style>
     body {
@@ -11,12 +11,48 @@
       font-family: Arial, sans-serif;
     }
 
+    /* HEADER STYLES */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #333;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      /* Start fully visible */
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* MAIN IMAGE - the limit for header scroll */
+    .main-image {
+      height: 400px; /* example height */
+      background: url('your-main-image.jpg') center/cover no-repeat;
+      margin-top: 60px; /* push content below fixed header */
+    }
+
+    /* HEADER MOVEMENT CONFIGURATION */
+    /* Max distance header moves down - height of main image */
+    :root {
+      --header-move-max: 400px;
+    }
+
+    /* GRID STYLES */
     .featured-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       padding: 5px 5px 30px 5px; /* top and bottom spacing, left and right 5px */
       box-sizing: border-box;
+      margin-top: 20px;
     }
 
     .white-box {
@@ -31,6 +67,7 @@
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      width: 100%;
     }
 
     .white-box:hover {
@@ -50,14 +87,13 @@
     .short {
       aspect-ratio: 1 / 0.66; /* 1/2 height of square */
     }
-
-    /* Ensure boxes take full column width */
-    .white-box {
-      width: 100%;
-    }
   </style>
 </head>
 <body>
+
+  <header id="header">My Header</header>
+
+  <div class="main-image" id="mainImage"></div>
 
   <!-- HIGHLIGHT: New Grid Section for Featured Boxes -->
   <div class="featured-grid">
@@ -74,5 +110,26 @@
     <div class="white-box tall">Project I</div>
   </div>
 
+  <script>
+    const header = document.getElementById('header');
+    const mainImage = document.getElementById('mainImage');
+
+    // Max amount header moves down (height of main image)
+    const maxMove = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-move-max'));
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY <= maxMove) {
+        // Move header down smoothly proportional to scroll but capped at maxMove
+        header.style.transform = `translateY(${scrollY}px)`;
+        header.style.opacity = '1'; // visible
+      } else {
+        // Hide header when scroll goes beyond main image
+        header.style.transform = `translateY(${maxMove}px)`;
+        header.style.opacity = '0'; // hidden
+      }
+    });
+  </script>
 </body>
 </html>
