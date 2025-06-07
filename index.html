@@ -349,38 +349,9 @@
       observer.observe(greyBox);
     });
   </script>
-    <div class="white-box"></div>
   
     <div class="grey-box" data-bg="CITY.jpg"></div>
 
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const greyBox = document.querySelector(".grey-box");
-
-            const observer = new IntersectionObserver(
-                (entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                           
-                            const imageUrl = greyBox.getAttribute("data-bg");
-                            greyBox.style.backgroundImage = url('${image.Url;}');
-                          
-
-                           
-                            greyBox.classList.add("visible");
-
-                           
-                            observer.unobserve(greyBox);
-                        }
-                    });
-                },
-                { rootMargin: "200px" } 
-            );
-
-            observer.observe(greyBox);
-        });
-    </script>
       
    
     
