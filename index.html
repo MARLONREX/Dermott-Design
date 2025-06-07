@@ -175,35 +175,31 @@
         }
         
 .portfolio {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin: 0 30px;
-}
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin: 0 30px;
+    }
 
-.image-row {
-  display: flex;
-  gap: 20px;
-  /* no vertical stacking here */
-}
+    .image-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-.image-box {
-  flex: 1;
-  height: auto; /* allow height to be set dynamically */
-  min-height: 100px;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  border-radius: 1px;
-  background-color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
+    .image-box {
+      flex: 1;
+      height: 600px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      border-radius: 1px;
+      background-color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
 
-/* Allow individual height inline or via class */
-
-/* Allow setting individual heights via inline styles or classes */
     .image-box img {
       max-width: 100%;
       max-height: 100%;
@@ -231,8 +227,7 @@
       max-height: 80vh;
       object-fit: contain;
       border-radius: 8px;
-    }
-
+    } 
 
 /* Footer navigation container */
 .footer-nav {
@@ -369,24 +364,6 @@
     <div class="image-box"><img src="PWB1.jpg" alt="Image 6" /></div>
   </div>
 
-<div class="image-box" style="height: 400px;">
-  <img src="image1.jpg" alt="Image 1">
-</div>
-<div class="image-box" style="height: 700px;">
-  <img src="image2.jpg" alt="Image 2">
-</div>
-  <div class="image-box" style="height: 400px;">
-  <img src="image3.jpg" alt="Image 1">
-</div>
-<div class="image-box" style="height: 700px;">
-  <img src="image4.jpg" alt="Image 2">
-</div>
-  <div class="image-box" style="height: 400px;">
-  <img src="image5.jpg" alt="Image 1">
-</div>
-<div class="image-box" style="height: 700px;">
-  <img src="image6.jpg" alt="Image 2">
-</div>
 </div>
 
 <!-- Lightbox container -->
