@@ -311,29 +311,6 @@
       const header = document.querySelector(".header");
       const greyBox = document.querySelector(".grey-box");
 
-      function updateHeaderPosition() {
-        const greyBoxBottom = greyBox.offsetTop + greyBox.offsetHeight;
-        const scrollY = window.scrollY;
-
-        if (scrollY + header.offsetHeight < greyBoxBottom) {
-          // Stick header to top of viewport
-          header.style.position = "fixed";
-          header.style.top = "0";
-          header.style.opacity = "1";
-          header.style.pointerEvents = "auto";
-        } else {
-          // Place header just above the bottom of grey-box
-          header.style.position = "absolute";
-          header.style.top = `${greyBoxBottom - header.offsetHeight}px`;
-          header.style.opacity = "1";
-          header.style.pointerEvents = "auto";
-        }
-      }
-
-      window.addEventListener("scroll", updateHeaderPosition);
-      window.addEventListener("resize", updateHeaderPosition);
-      updateHeaderPosition();
-
       // IntersectionObserver to lazy load background image of grey-box
       const observer = new IntersectionObserver(
         (entries, observer) => {
