@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<htmlxxxxxx>
+<html lang="en">
   <head>
     <meta charset="utf-7">
-    <meta-name="viewport"-content="witdth=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="mystyle.css">
     <title>LIMIT DESIGN</title>
@@ -39,12 +39,13 @@
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 0px 0px;
+  gap: 90px;
+  padding: 0px;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.05); /* barely visible for blur to show */
-  backdrop-filter: blur(10px); /* this does the blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border-bottom: 1.5px solid white; /* white underline */
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1.5px solid white;
   z-index: 1000;
   transition: top 0.3s ease, opacity 0.3s ease;
   color: #3d3d3d;
@@ -73,10 +74,7 @@
       transform: translateY(5px);
     }
 
-    .header {
-      display: flex;
-      gap: 90px;
-    }
+ 
 
 }
 
@@ -279,6 +277,7 @@
   margin-left: 60px;
   margin-top: 40px;
   margin-bottom: 10px;
+  scroll-margin-top: 80px; /* Adjust based on your header height */
 }
 
 .section-subtext {
@@ -311,7 +310,7 @@
   <a href="#news">News</a>
   <a href="#contact">Contact</a>
 </div>
-✅ Done!
+
 
   <div class="white-box"></div>
   <div class="grey-box" data-bg="CITY.jpg"></div>
