@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="mystyle.css">
     <title>LMT</title>
     <style>
-        
+
+    html {
+  scroll-behavior: smooth;
+}
+      
     .header {
     margin-top: 20px;
     position: fixed;
@@ -297,7 +301,7 @@
 <div class="header">
     <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="DDABOUT.html">About</a>
-    <a href="DDWORK.html">Work</a>
+    <a href="#work">Work</a>
     <a href="DDNEWS.html">News</a>
     <a href="DDPARTNERS.html">Contact</a>
   </div>
@@ -355,7 +359,22 @@
    
     
     <br>
-    <div id="featured-text" class="featured-text">Featured work</div>
+   <div id="work">
+  <div id="featured-text" class="featured-text">Featured work</div>
+  <div class="portfolio">
+    <div class="image-row">
+      <div class="image-box"><img src="WB5.png" alt="Image 1" /></div>
+      <div class="image-box"><img src="PWB4.jpg" alt="Image 2" /></div>
+      <div class="image-box"><img src="PWB2.jpg" alt="Image 3" /></div>
+    </div>
+
+    <div class="image-row">
+      <div class="image-box"><img src="WB3.png" alt="Image 4" /></div>
+      <div class="image-box"><img src="PWB3.jpg" alt="Image 5" /></div>
+      <div class="image-box"><img src="PWB1.jpg" alt="Image 6" /></div>
+    </div>
+  </div>
+</div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     const greyBox = document.querySelector(".grey-box");
