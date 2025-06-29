@@ -42,21 +42,23 @@
         }
 
 .header {
-      position: fixed; /* Always fixed at top initially */
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      padding: 5px 15px;
-      font-size: 20px;
-      background-color: transparent;
-      z-index: 1000;
-      transition: top 0.3s ease, opacity 0.3s ease;
-      color: white;
-      font-family: "Univers", sans-serif;
-    
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.05); /* barely visible for blur to show */
+  backdrop-filter: blur(10px); /* this does the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-bottom: 1.5px solid white; /* white underline */
+  z-index: 1000;
+  transition: top 0.3s ease, opacity 0.3s ease;
+  color: white;
+  font-family: "Univers", sans-serif;
+}
     .header a {
       color: white;
       text-decoration: none;
