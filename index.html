@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-7">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="mystyle.css">
-    <title>LIMIT DESIGN</title>
-    <style>
-      
+<head>
+  <meta charset="utf-7">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="mystyle.css">
+  <title>LIMIT DESIGN</title>
+  <style>
+    .logo {
+      width: 25%;
+      height: auto;
+      font-size: 60px;
+      color: #27292B;
+    }
 
-        
-        .logo {
-            width: 25%;
-            height: auto; 
-            font-size: 60px;
-            color: #27292B;
-        }
+    body {
+      font-family: "Arial", Sans sarif;
+      margin: 200;
+      padding: 0;
+      cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
+    }
 
-        body {
-            font-family: "Arial", Sans sarif;
-            margin: 200;
-            padding: 0;
-            cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
-        }
+    .header a:hover,
+    .grey-box:hover,
+    .featured-grey-box:hover,
+    .bottom-grey-box:hover {
+      cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20"%3E%3Ccircle cx="10" cy="10" r="10" fill="%23333" /%3E%3C/svg%3E'), auto;
+    }
 
-        /* Large Cursor for Hover */
-        .header a:hover,
-        .grey-box:hover,
-        .featured-grey-box:hover,
-        .bottom-grey-box:hover {
-            cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20"%3E%3Ccircle cx="10" cy="10" r="10" fill="%23333" /%3E%3C/svg%3E'), auto;
-        }
+    .header {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 90px;
+      padding: 0px;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1.5px solid white;
+      z-index: 1000;
+      transition: top 0.3s ease, opacity 0.3s ease;
+      color: #3d3d3d;
+      font-family: "Univers", sans-serif;
+    }
 
-.header {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 90px;
-  padding: 0px;
-  font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1.5px solid white;
-  z-index: 1000;
-  transition: top 0.3s ease, opacity 0.3s ease;
-  color: #3d3d3d;
-  font-family: "Univers", sans-serif;
-}
     .header a {
       color: #3d3d3d;
       text-decoration: none;
@@ -74,57 +71,43 @@
       transform: translateY(5px);
     }
 
- 
+    .header a:nth-child(2),
+    .header a:nth-child(3),
+    .header a:nth-child(4),
+    .header a:nth-child(5) {
+      margin-left: 80px;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      transition: transform 0.3s ease;
+    }
 
-}
+    .header a:nth-child(5) {
+      margin-left: 60px;
+    }
 
-.header a:nth-child(2) {
-    margin-left: 80px; 
-}
+    .header a:nth-child(2):hover,
+    .header a:nth-child(3):hover,
+    .header a:nth-child(4):hover,
+    .header a:nth-child(5):hover {
+      transform: translateY(5px);
+    }
 
-.header a:nth-child(3) {
-    margin-left: 80px; 
-}
+    .Title {
+      font-size: 30px;
+      margin-left: 40px;
+      font-weight: normal;
+      margin-top: 80px;
+      color: #212121;
+    }
 
-.header a:nth-child(4) {
-    margin-left: 80px;
-}
+    .subgraph {
+      margin-left: 840px;
+      margin-right: 50px;
+      font-size: 20px;
+      font-weight: normal;
+    }
 
-.header a:nth-child(5) {
-    margin-left: 60px;
-}
-
-.header a:nth-child(2),
-.header a:nth-child(3),
-.header a:nth-child(4),
-.header a:nth-child(5) {
-    text-decoration: underline;
-    text-underline-offset: 5px; 
-    transition: transform 0.3s ease; 
-}
-
-.header a:nth-child(2):hover,
-.header a:nth-child(3):hover,
-.header a:nth-child(4):hover,
-.header a:nth-child(5):hover {
-    transform: translateY(5px); 
-}
-
-        .Title {
-            font-size: 30px; 
-            margin-left: 40px;
-            font-weight: normal;
-            margin-top: 80px; 
-            color: #212121;
-        }
-
-        .subgraph {
-            margin-left: 40px;
-            font-size: 8px;
-            font-weight: normal;
-        }
-        
-        .grey-box {
+    .grey-box {
       width: calc(110% - 100px);
       height: 1100px;
       background-size: cover;
@@ -140,63 +123,52 @@
       opacity: 1;
     }
 
-.small-text {
-    font-size: 16px;
-}
+    .grey-box:hover {
+      box-shadow: 0 0 15px #D3D3D3;
+    }
 
-.grey-box.visible {
-    opacity: 1; 
-}
-        .grey-box:hover { box-shadow: 0 0 15px #D3D3D3; }
-        
-        .featured-text {
-            font-size: 60px;
-            color: #333;
-            margin-left: 60px;
-            margin-top: 30px;
-            position: relative;
-            transition: all 0.3s;
-            color: #27292B;
-        }
+    .featured-text {
+      font-size: 60px;
+      color: #27292B;
+      margin-left: 60px;
+      margin-top: 30px;
+      position: relative;
+      transition: all 0.3s;
+    }
 
-        .sticky {
-            position: fixed;
-            top: 50px;
-            left: 0;
-            width: 7%;
-            background: white;
-            padding: 10px 40px;
-            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-        .subgraph {
-            margin-left: 840px;
-            margin-right: 50px;
-            font-size: 20px;
-            font-weight: normal;
+    .sticky {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      width: 7%;
+      background: white;
+      padding: 10px 40px;
+      box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
 
-          .footer-text {
-  font-size: 28px;
-  font-family: sans-serif;
-  color: white;
-  font-weight: bold;
-  position: absolute;
-  bottom: 10px;
-  left: 20px;
-  opacity: 0.8;
-}
-        }
-      .section-heading {
-  font-size: 28px;
-  font-family: sans-serif;
-  color: #3d3d3d;
-  margin-left: 60px;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  scroll-margin-top: 80px;
-}
-        
-.portfolio {
+    .footer-text {
+      font-size: 28px;
+      font-family: sans-serif;
+      color: white;
+      font-weight: bold;
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      opacity: 0.8;
+    }
+
+    .section-heading {
+      font-size: 28px;
+      font-family: sans-serif;
+      color: #3d3d3d;
+      margin-left: 60px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      scroll-margin-top: 80px;
+    }
+
+    .portfolio {
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -233,7 +205,7 @@
       box-shadow: 0 0 15px 3px red;
       transition: box-shadow 0.3s ease;
     }
-    /* Lightbox overlay styles */
+
     .lightbox {
       position: fixed;
       top: 0;
@@ -253,93 +225,75 @@
       max-height: 80vh;
       object-fit: contain;
       border-radius: 8px;
-    } 
+    }
 
-/* Footer navigation container */
-.footer-nav {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(3, auto); 
-    gap: 15px 40px; 
-    position: absolute;
-    bottom: 30px; 
-    right: 200px; 
-}
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(3, auto);
+      gap: 15px 40px;
+      position: absolute;
+      bottom: 30px;
+      right: 200px;
+    }
 
-/* Footer navigation links */
-.footer-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 5px 10px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
+    .footer-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 5px 10px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
 
-.footer-nav a:hover {
-    background-color: #6b6b6b;
-    box-shadow: 0 0 10px #D3D3D3;
-}
+    .footer-nav a:hover {
+      background-color: #6b6b6b;
+      box-shadow: 0 0 10px #D3D3D3;
+    }
 
+    .copyright {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      opacity: 0.8;
+    }
 
-.copyright {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    opacity: 0.8;
-}
-      .section-heading {
-  font-size: 28px;
-  font-family: sans-serif;
-  color: #3d3d3d;
-  margin-left: 60px;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  scroll-margin-top: 80px; /* Adjust based on your header height */
-}
+    .section-subtext {
+      font-size: 16px;
+      font-family: sans-serif;
+      color: #3d3d3d;
+      margin-left: 60px;
+      margin-bottom: 30px;
+    }
 
-.section-subtext {
-  font-size: 16px;
-  font-family: sans-serif;
-  color: #3d3d3d;
-  margin-left: 60px;
-  margin-bottom: 30px;
-}
-
-
-@media (max-width: 600px) {
-
-  .wrapper-main{
-    width: 100%;
-  }
-}
-      
-    </style>
+    @media (max-width: 600px) {
+      .wrapper-main {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
- 
 
 <body>
-  
-  
-<div class="header">
-  <div class="logo"><a href="index.html">LIMIT</a></div>
-  <a href="#about">About</a>
-  <a href="#work">Work</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-</div>
 
+  <div class="header">
+    <div class="logo"><a href="index.html">LIMIT</a></div>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </div>
 
   <div class="white-box"></div>
   <div class="grey-box" data-bg="CITY.jpg"></div>
- <script>
+
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       const header = document.querySelector(".header");
       const greyBox = document.querySelector(".grey-box");
 
-      // IntersectionObserver to lazy load background image of grey-box
       const observer = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach((entry) => {
@@ -356,139 +310,80 @@
       observer.observe(greyBox);
     });
   </script>
-  
 
-      
-   
-    
-    <br>
-   <div id="work">
-     <br>
-     <br>
-     <br>
-     <br>
-     <!-- About Section -->
-<div id="about" class="section-heading">About</div>
-<p class="section-subtext">We are imit. Developing designs and drawings, since 2020.</p>
+  <br>
+  <div id="work">
+    <br><br><br><br>
 
-     <br>
-     <br>
-     <br>
-     <br>
-  <div id="featured-text" class="section-heading">Work</div>
-  <div class="portfolio">
-    <div class="image-row">
-      <div class="image-box"><img src="WB5.png" alt="Image 1" /></div>
-      <div class="image-box"><img src="PWB4.jpg" alt="Image 2" /></div>
-      <div class="image-box"><img src="PWB2.jpg" alt="Image 3" /></div>
+    <!-- About Section -->
+    <div id="about" class="section-heading">About</div>
+    <p class="section-subtext">We are imit. Developing designs and drawings, since 2020.</p>
+
+    <br><br><br><br>
+
+    <div id="featured-text" class="section-heading">Work</div>
+    <div class="portfolio">
+      <div class="image-row">
+        <div class="image-box"><img src="WB5.png" alt="Image 1" /></div>
+        <div class="image-box"><img src="PWB4.jpg" alt="Image 2" /></div>
+        <div class="image-box"><img src="PWB2.jpg" alt="Image 3" /></div>
+      </div>
+      <div class="image-row">
+        <div class="image-box"><img src="WB3.png" alt="Image 4" /></div>
+        <div class="image-box"><img src="PWB3.jpg" alt="Image 5" /></div>
+        <div class="image-box"><img src="PWB1.jpg" alt="Image 6" /></div>
+      </div>
     </div>
 
-    <div class="image-row">
-      <div class="image-box"><img src="WB3.png" alt="Image 4" /></div>
-      <div class="image-box"><img src="PWB3.jpg" alt="Image 5" /></div>
-      <div class="image-box"><img src="PWB1.jpg" alt="Image 6" /></div>
+    <!-- News Section -->
+    <div id="news" class="section-heading">News</div>
+    <p class="section-subtext">Stuff here.</p>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section-heading">Contact</div>
+    <p class="section-subtext">Stuff here.</p>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Zoomed Image">
+  </div>
+
+  <div class="bottom-grey-box">
+    <div class="copyright">
+      Curators of Shape & Space
+      <p>Since 2020</p>
     </div>
-</div> <!-- end of .portfolio -->
+  </div>
 
-<!-- News Section -->
-<div id="news" class="section-heading">News</div>
-<p class="section-subtext">Stuff here.</p>
-
-<!-- Contact Section -->
-<div id="contact" class="section-heading">Contact</div>
-<p class="section-subtext">Stuff here.</p>
-
-</div> <!-- end of #work -->
-
-
-
-  
-<script>
+  <script defer>
     document.addEventListener("DOMContentLoaded", function () {
-    const greyBox = document.querySelector(".grey-box");
-
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const imageUrl = greyBox.getAttribute("data-bg");
-                    greyBox.style.backgroundImage = `url('${imageUrl}')`;
-                    greyBox.classList.add("visible");
-                    observer.unobserve(greyBox);
-                }
-            });
-        },
-        { rootMargin: "200px" }
-    );
-
-    observer.observe(greyBox);
-});
-</script>
-
-
-<!-- Lightbox container -->
-<div class="lightbox" id="lightbox">
-  <img id="lightbox-img" src="" alt="Zoomed Image">
-</div>
-
-  
-
-
-    <div class="bottom-grey-box">
-        
-        <div class="copyright">
-    Curators of Shape & Space 
-          <p>
-      Since 2020
-    </p></div>
-    
-       <br>
-      <br>
-       
-    
-    
-    <script defer>
-        document.addEventListener("DOMContentLoaded", function() {
-            const elements = document.querySelectorAll('.hidden');
-            elements.forEach(el => {
-                setTimeout(() => {
-                    el.classList.add('visible');
-                }, 300);
-            });
-        });
-    </script>
-
-      <script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
+      const elements = document.querySelectorAll('.hidden');
+      elements.forEach(el => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, 300);
+      });
     });
-  });
-</script>
-      <br><br><br><br><br><br><br><br><br><br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-  </body>
+  </script>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    });
+  </script>
+
+  <br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br>
+</body>
 </html>
