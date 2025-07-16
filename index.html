@@ -275,11 +275,11 @@
     }
 
 
-     .intro-screen {
+   .intro-screen {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: black;
+      background: #333;
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -291,56 +291,41 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      width: 90vw;
-      height: 80vh;
-      gap: 10px;
+      width: 100vw;
+      height: 100vh;
+      gap: 2px;
+      border: 4px solid #444;
+      box-sizing: border-box;
     }
 
     .intro-cell {
-      background-color: black;
-      border-radius: 4px;
-      transition: background 0.4s ease-in;
+      background-color: #000;
+      border: 1px solid #444;
+      transition: opacity 0.5s ease-in;
     }
 
-    .intro-cell.on {
-      background: white;
-      animation: flicker 0.6s ease;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 0; transform: scale(1.1); }
-      50% { opacity: 1; transform: scale(0.98); }
-      100% { opacity: 1; transform: scale(1); }
+    .intro-cell.off {
+      opacity: 0;
     }
 
     .limit-title {
       position: absolute;
-      top: 40%;
+      top: 45%;
       font-size: 40px;
       font-weight: bold;
       color: red;
       z-index: 100;
       text-align: center;
-    }
-
-    .limit-shadow {
-      position: absolute;
-      top: calc(40% + 100px);
-      font-size: 40px;
-      font-weight: bold;
-      color: grey;
-      opacity: 0.5;
-      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
     
   </style>
 </head>
 
 <body>
- <!-- INTRO SCREEN -->
-  <div class="intro-screen" id="intro">
-    <div class="limit-title">LIMIT</div>
-    <div class="limit-shadow">LIMIT</div>
+ <div class="intro-screen" id="intro">
+    <div class="limit-title" id="limitText">LIMIT</div>
     <div class="intro-grid" id="grid">
       <!-- JS will generate 12 cells here -->
     </div>
@@ -453,9 +438,13 @@
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
 
-  <script>
+<script>
     document.addEventListener("DOMContentLoaded", () => {
       const grid = document.getElementById("grid");
+      const limitText = document.getElementById("limitText");
+      const intro = document.getElementById("intro");
+
+      // Create 12 grid cells
       for (let i = 0; i < 12; i++) {
         const cell = document.createElement("div");
         cell.classList.add("intro-cell");
@@ -463,14 +452,14 @@
         grid.appendChild(cell);
       }
 
-      // Step 1: Fade out LIMIT after 2 seconds
+      // Step 1: Wait 1 second with grid only
       setTimeout(() => {
-        document.querySelector(".limit-title").style.opacity = 0;
-        document.querySelector(".limit-shadow").style.opacity = 0;
-      }, 2000);
+        limitText.style.opacity = 1;
+      }, 1000);
 
-      // Step 2: Turn on TV-like cells in diagonal wave
+      // Step 2: Show "LIMIT" for 1.5 seconds
       setTimeout(() => {
+        // Begin turning off cells from top-right to bottom-left
         const cells = Array.from(document.querySelectorAll(".intro-cell"));
         const diagonals = [
           [3],
@@ -484,17 +473,27 @@
         let delay = 0;
         diagonals.forEach(group => {
           setTimeout(() => {
-            group.forEach(i => cells[i]?.classList.add("on"));
+            group.forEach(i => cells[i]?.classList.add("off"));
           }, delay);
-          delay += 333; // 3 per second
+          delay += 500; // 1 every 0.5s
         });
 
-        // Remove intro screen after animation
+        // Step 3: Remove grid outline
         setTimeout(() => {
-          document.getElementById("intro").style.display = "none";
+          grid.style.border = "none";
+        }, delay + 500);
+
+        // Step 4: Remove LIMIT text
+        setTimeout(() => {
+          limitText.style.opacity = 0;
         }, delay + 1000);
 
-      }, 2300);
+        // Step 5: Remove intro screen entirely
+        setTimeout(() => {
+          intro.style.display = "none";
+        }, delay + 1500);
+
+      }, 2500); // starts after LIMIT is shown for 1.5s
     });
   </script>
   
