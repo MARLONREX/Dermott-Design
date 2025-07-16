@@ -273,11 +273,78 @@
         width: 100%;
       }
     }
+
+
+     .intro-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: black;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      width: 90vw;
+      height: 80vh;
+      gap: 10px;
+    }
+
+    .intro-cell {
+      background-color: black;
+      border-radius: 4px;
+      transition: background 0.4s ease-in;
+    }
+
+    .intro-cell.on {
+      background: white;
+      animation: flicker 0.6s ease;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0; transform: scale(1.1); }
+      50% { opacity: 1; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .limit-title {
+      position: absolute;
+      top: 40%;
+      font-size: 40px;
+      font-weight: bold;
+      color: red;
+      z-index: 100;
+      text-align: center;
+    }
+
+    .limit-shadow {
+      position: absolute;
+      top: calc(40% + 100px);
+      font-size: 40px;
+      font-weight: bold;
+      color: grey;
+      opacity: 0.5;
+      text-align: center;
+    }
+    
   </style>
 </head>
 
 <body>
-
+ <!-- INTRO SCREEN -->
+  <div class="intro-screen" id="intro">
+    <div class="limit-title">LIMIT</div>
+    <div class="limit-shadow">LIMIT</div>
+    <div class="intro-grid" id="grid">
+      <!-- JS will generate 12 cells here -->
+    </div>
+  </div>
   <div class="header">
     <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="#about">About</a>
@@ -385,5 +452,51 @@
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("grid");
+      for (let i = 0; i < 12; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("intro-cell");
+        cell.setAttribute("data-index", i);
+        grid.appendChild(cell);
+      }
+
+      // Step 1: Fade out LIMIT after 2 seconds
+      setTimeout(() => {
+        document.querySelector(".limit-title").style.opacity = 0;
+        document.querySelector(".limit-shadow").style.opacity = 0;
+      }, 2000);
+
+      // Step 2: Turn on TV-like cells in diagonal wave
+      setTimeout(() => {
+        const cells = Array.from(document.querySelectorAll(".intro-cell"));
+        const diagonals = [
+          [3],
+          [2, 7],
+          [1, 6, 11],
+          [0, 5, 10],
+          [4, 9],
+          [8]
+        ];
+
+        let delay = 0;
+        diagonals.forEach(group => {
+          setTimeout(() => {
+            group.forEach(i => cells[i]?.classList.add("on"));
+          }, delay);
+          delay += 333; // 3 per second
+        });
+
+        // Remove intro screen after animation
+        setTimeout(() => {
+          document.getElementById("intro").style.display = "none";
+        }, delay + 1000);
+
+      }, 2300);
+    });
+  </script>
+  
 </body>
 </html>
