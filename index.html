@@ -275,11 +275,11 @@
     }
 
 
-   .intro-screen {
+ .intro-screen {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: #333;
+      background: url('CITY.jpg') center center/cover no-repeat;
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -294,13 +294,13 @@
       width: 100vw;
       height: 100vh;
       gap: 2px;
-      border: 4px solid #444;
       box-sizing: border-box;
+      pointer-events: none;
     }
 
     .intro-cell {
       background-color: #000;
-      border: 1px solid #444;
+      outline: 2px solid #444;
       transition: opacity 0.5s ease-in;
     }
 
@@ -319,12 +319,11 @@
       opacity: 0;
       transition: opacity 0.5s ease;
     }
-    
   </style>
 </head>
 
 <body>
- <div class="intro-screen" id="intro">
+  <div class="intro-screen" id="intro">
     <div class="limit-title" id="limitText">LIMIT</div>
     <div class="intro-grid" id="grid">
       <!-- JS will generate 12 cells here -->
@@ -478,17 +477,12 @@
           delay += 500; // 1 every 0.5s
         });
 
-        // Step 3: Remove grid outline
-        setTimeout(() => {
-          grid.style.border = "none";
-        }, delay + 500);
-
-        // Step 4: Remove LIMIT text
+        // Step 3: Remove LIMIT text after all cells are off
         setTimeout(() => {
           limitText.style.opacity = 0;
         }, delay + 1000);
 
-        // Step 5: Remove intro screen entirely
+        // Step 4: Remove intro screen entirely
         setTimeout(() => {
           intro.style.display = "none";
         }, delay + 1500);
@@ -496,6 +490,7 @@
       }, 2500); // starts after LIMIT is shown for 1.5s
     });
   </script>
+
   
 </body>
 </html>
