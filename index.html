@@ -279,7 +279,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: url('CITY.jpg') center center/cover no-repeat;
+      background: #000;
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -296,6 +296,9 @@
       gap: 2px;
       box-sizing: border-box;
       pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .intro-cell {
@@ -319,10 +322,19 @@
       opacity: 0;
       transition: opacity 0.5s ease;
     }
+
+    body {
+      visibility: hidden;
+    }
+
+    body.revealed {
+      visibility: visible;
+    }
   </style>
 </head>
 
 <body>
+ <!-- INTRO SCREEN -->
   <div class="intro-screen" id="intro">
     <div class="limit-title" id="limitText">LIMIT</div>
     <div class="intro-grid" id="grid">
@@ -436,12 +448,12 @@
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
-
-<script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       const grid = document.getElementById("grid");
       const limitText = document.getElementById("limitText");
       const intro = document.getElementById("intro");
+      const body = document.body;
 
       // Create 12 grid cells
       for (let i = 0; i < 12; i++) {
@@ -458,7 +470,6 @@
 
       // Step 2: Show "LIMIT" for 1.5 seconds
       setTimeout(() => {
-        // Begin turning off cells from top-right to bottom-left
         const cells = Array.from(document.querySelectorAll(".intro-cell"));
         const diagonals = [
           [3],
@@ -482,9 +493,10 @@
           limitText.style.opacity = 0;
         }, delay + 1000);
 
-        // Step 4: Remove intro screen entirely
+        // Step 4: Remove intro screen and reveal site
         setTimeout(() => {
           intro.style.display = "none";
+          body.classList.add("revealed");
         }, delay + 1500);
 
       }, 2500); // starts after LIMIT is shown for 1.5s
