@@ -284,64 +284,50 @@
 
 
 
-    
- #introOverlay {
+   /* Overlay that covers entire screen */
+  #introOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
-    display: grid;
-    place-items: center;
+    background-color: #1a1a1a; /* dark grey */
     z-index: 9999;
-    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 2s ease;
   }
 
+  /* LIMIT text styling */
   #limitText {
-    position: absolute;
     font-size: 4rem;
+    color: #ff2800; /* Ferrari red */
     font-family: Arial, sans-serif;
-    color: #ff2800;
     opacity: 0;
-    transition: opacity 1s ease;
-    z-index: 10000;
+    transition: opacity 2s ease;
   }
 
-  #gridContainer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2px;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9998;
+  /* Fade in the body content */
+  body.reveal-content {
+    animation: fadeInBody 2s ease forwards;
   }
 
-  .grid-cell {
-    background-color: black;
-    border: 1px solid grey;
-    width: 100%;
-    height: 100%;
-  }
-
-  .grid-cell.fade-out {
-    animation: fadeOut 0.4s ease forwards;
-  }
-
-  @keyframes fadeOut {
-    to {
+  @keyframes fadeInBody {
+    from {
       opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
   </style>
 </head>
 
 <div id="introOverlay">
-  <div id="gridContainer"></div>
   <div id="limitText">LIMIT</div>
 </div>
-
   
   <div class="header">
     <div class="logo"><a href="index.html">LIMIT</a></div>
@@ -452,51 +438,31 @@
   <br><br><br><br><br><br><br><br><br><br>
 
 <script>
-  const gridContainer = document.getElementById('gridContainer');
-  const totalRows = 3;
-  const totalCols = 5;
-  const gridCells = [];
+  document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("introOverlay");
+    const limit = document.getElementById("limitText");
 
-  for (let row = 0; row < totalRows; row++) {
-    for (let col = 0; col < totalCols; col++) {
-      const cell = document.createElement('div');
-      cell.classList.add('grid-cell');
-      cell.dataset.row = row;
-      cell.dataset.col = col;
-      gridContainer.appendChild(cell);
-      gridCells.push(cell);
-    }
-  }
-
-  setTimeout(() => {
-    document.getElementById('limitText').style.opacity = 1;
-  }, 1000);
-
-  function getFadeOrder(cells) {
-    return cells.sort((a, b) => {
-      return (
-        parseInt(a.dataset.row) - parseInt(b.dataset.row) ||
-        parseInt(b.dataset.col) - parseInt(a.dataset.col)
-      );
-    });
-  }
-
-  setTimeout(() => {
-    const orderedCells = getFadeOrder(gridCells);
-    orderedCells.forEach((cell, index) => {
-      setTimeout(() => {
-        cell.classList.add('fade-out');
-      }, index * 250);
-    });
-
+    // 1s delay, then fade in LIMIT
     setTimeout(() => {
-      document.getElementById('limitText').style.opacity = 0;
-    }, orderedCells.length * 250 + 500);
+      limit.style.opacity = 1;
+    }, 1000);
 
+    // After another 1s (2s total), fade out LIMIT
     setTimeout(() => {
-      document.getElementById('introOverlay').remove();
-    }, orderedCells.length * 250 + 1500);
-  }, 2000);
+      limit.style.opacity = 0;
+    }, 2000);
+
+    // After 4s total, fade out overlay and fade in body
+    setTimeout(() => {
+      overlay.style.opacity = 0;
+      document.body.classList.add("reveal-content");
+    }, 4000);
+
+    // Remove overlay after fade-out completes
+    setTimeout(() => {
+      overlay.remove();
+    }, 6000);
+  });
 </script>
   
 </body>
