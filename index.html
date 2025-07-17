@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-7">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="mystyle.css">
   <title>LIMIT DESIGN</title>
+  
   <style>
     .logo {
       width: 25%;
@@ -275,72 +275,74 @@
     }
 
 
- .intro-screen {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: #000;
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
 
-    .intro-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      width: 100vw;
-      height: 100vh;
-      gap: 2px;
-      box-sizing: border-box;
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
 
-    .intro-cell {
-      background-color: #000;
-      outline: 2px solid #444;
-      transition: opacity 0.5s ease-in;
-    }
 
-    .intro-cell.off {
-      opacity: 0;
-    }
 
-    .limit-title {
-      position: absolute;
-      top: 45%;
-      font-size: 40px;
-      font-weight: bold;
-      color: red;
-      z-index: 100;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
 
-    body {
-      visibility: hidden;
+
+
+
+
+
+
+
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
     }
 
     body.revealed {
-      visibility: visible;
+      overflow: auto;
     }
+
+    .intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      z-index: 99999;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .overlay-tile {
+      background-color: #000;
+      border: 2px solid #444;
+      transition: opacity 0.5s ease;
+    }
+
+    .overlay-tile.hide {
+      opacity: 0;
+    }
+
+    .limit-text {
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      font-weight: bold;
+      color: red;
+      z-index: 100000;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+  
   </style>
 </head>
 
 <body>
- <!-- INTRO SCREEN -->
-  <div class="intro-screen" id="intro">
-    <div class="limit-title" id="limitText">LIMIT</div>
-    <div class="intro-grid" id="grid">
-      <!-- JS will generate 12 cells here -->
-    </div>
-  </div>
+  <!-- Overlay Tiles -->
+  <div class="limit-text" id="limitText">LIMIT</div>
+  <div class="intro-overlay" id="introOverlay"></div>
+  
   <div class="header">
     <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="#about">About</a>
@@ -450,27 +452,26 @@
   <br><br><br><br><br><br><br><br><br><br>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const grid = document.getElementById("grid");
+      const overlay = document.getElementById("introOverlay");
       const limitText = document.getElementById("limitText");
-      const intro = document.getElementById("intro");
-      const body = document.body;
+      const mainContent = document.getElementById("mainContent");
 
-      // Create 12 grid cells
+      // Create 12 tiles
+      const tiles = [];
       for (let i = 0; i < 12; i++) {
-        const cell = document.createElement("div");
-        cell.classList.add("intro-cell");
-        cell.setAttribute("data-index", i);
-        grid.appendChild(cell);
+        const tile = document.createElement("div");
+        tile.classList.add("overlay-tile");
+        overlay.appendChild(tile);
+        tiles.push(tile);
       }
 
-      // Step 1: Wait 1 second with grid only
+      // Step 1: Show LIMIT text after 1 second
       setTimeout(() => {
         limitText.style.opacity = 1;
       }, 1000);
 
-      // Step 2: Show "LIMIT" for 1.5 seconds
+      // Step 2: Start hiding tiles in diagonal sequence after 2.5s
       setTimeout(() => {
-        const cells = Array.from(document.querySelectorAll(".intro-cell"));
         const diagonals = [
           [3],
           [2, 7],
@@ -483,23 +484,25 @@
         let delay = 0;
         diagonals.forEach(group => {
           setTimeout(() => {
-            group.forEach(i => cells[i]?.classList.add("off"));
+            group.forEach(index => {
+              tiles[index].classList.add("hide");
+            });
           }, delay);
-          delay += 500; // 1 every 0.5s
+          delay += 500;
         });
 
-        // Step 3: Remove LIMIT text after all cells are off
+        // Step 3: Hide LIMIT text and remove overlay after all tiles gone
         setTimeout(() => {
           limitText.style.opacity = 0;
-        }, delay + 1000);
+        }, delay + 500);
 
-        // Step 4: Remove intro screen and reveal site
         setTimeout(() => {
-          intro.style.display = "none";
-          body.classList.add("revealed");
+          overlay.style.display = "none";
+          limitText.style.display = "none";
+          mainContent.style.visibility = "visible";
+          document.body.classList.add("revealed");
         }, delay + 1500);
-
-      }, 2500); // starts after LIMIT is shown for 1.5s
+      }, 2500);
     });
   </script>
 
