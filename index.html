@@ -280,27 +280,35 @@
 
 
 
+body {
+  background: url('CITY.jpg') no-repeat center center;
+  background-size: cover;
+  font-family: "Arial", Arial;
+  margin: 200;
+  padding: 15;
+  cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
+}
 
 
 
-
-/* Loader container */
+/* LOADING SCREEN STYLES */
 #loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000; /* Black screen */
+  background-color: white; /* White screen */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   opacity: 1;
+  transition: opacity 2s ease-in-out;
   pointer-events: all;
 }
 
-/* "LIMIT" text */
+/* "LIMIT" Text Styling */
 #loader-text {
   color: red;
   font-size: 60px;
@@ -309,25 +317,15 @@
   transition: opacity 1s ease-in-out;
 }
 
-/* Class to show text */
-.show-text #loader-text {
+/* Show LIMIT */
+#loader.show-text #loader-text {
   opacity: 1;
 }
 
-/* Class to fade out loader */
-.fade-out {
-  animation: fadeOut 2s forwards;
-  animation-delay: 1s;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    pointer-events: none;
-  }
+/* Fade out loader */
+#loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
   </style>
 </head>
@@ -445,21 +443,21 @@
   <br><br><br><br><br><br><br><br><br><br>
 
 
-  <script>
+ <script>
   document.addEventListener("DOMContentLoaded", function () {
     const loader = document.getElementById("loader");
 
-    // Show text after 1 second
+    // 1 second: show the LIMIT text
     setTimeout(() => {
       loader.classList.add("show-text");
     }, 1000);
 
-    // Start fade out after 2 seconds
+    // 2 seconds: begin fading out loader
     setTimeout(() => {
       loader.classList.add("fade-out");
     }, 2000);
 
-    // Remove loader from DOM after 3 seconds
+    // 4 seconds: remove loader from DOM
     setTimeout(() => {
       loader.remove();
     }, 4000);
