@@ -284,64 +284,68 @@
 
 
 
-
-
-
     
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
 
-    body.revealed {
-      overflow: auto;
-    }
 
-    .intro-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #000;
-      z-index: 99999;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-    }
+  /* Overlay Container */
+  #introOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+    pointer-events: none;
+  }
 
-    .overlay-tile {
-      background-color: #000;
-      border: 2px solid #444;
-      transition: opacity 0.5s ease;
-    }
+  /* LIMIT Text */
+  #limitText {
+    position: absolute;
+    font-size: 4rem;
+    font-family: Arial, sans-serif;
+    color: #ff2800; /* Ferrari red */
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 10000;
+  }
 
-    .overlay-tile.hide {
+  /* Grid Container */
+  #gridContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9998;
+  }
+
+  .grid-cell {
+    background-color: black;
+    border: 1px solid grey;
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid-cell.fade-out {
+    animation: fadeOut 0.6s ease forwards;
+  }
+
+  @keyframes fadeOut {
+    to {
       opacity: 0;
     }
-
-    .limit-text {
-      position: fixed;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 40px;
-      font-weight: bold;
-      color: red;
-      z-index: 100000;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-  
+  }
   </style>
 </head>
 
-<body>
-  <!-- Overlay Tiles -->
-  <div class="limit-text" id="limitText">LIMIT</div>
-  <div class="intro-overlay" id="introOverlay"></div>
+<div id="introOverlay">
+  <div id="gridContainer"></div>
+  <div id="limitText">LIMIT</div>
+</div>
   
   <div class="header">
     <div class="logo"><a href="index.html">LIMIT</a></div>
@@ -450,61 +454,60 @@
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const overlay = document.getElementById("introOverlay");
-      const limitText = document.getElementById("limitText");
-      const mainContent = document.getElementById("mainContent");
+<script>
+  // Step 1: Build grid
+  const gridContainer = document.getElementById('gridContainer');
+  const totalRows = 3;
+  const totalCols = 5;
+  const gridCells = [];
 
-      // Create 12 tiles
-      const tiles = [];
-      for (let i = 0; i < 12; i++) {
-        const tile = document.createElement("div");
-        tile.classList.add("overlay-tile");
-        overlay.appendChild(tile);
-        tiles.push(tile);
-      }
+  for (let row = 0; row < totalRows; row++) {
+    for (let col = 0; col < totalCols; col++) {
+      const cell = document.createElement('div');
+      cell.classList.add('grid-cell');
+      cell.dataset.row = row;
+      cell.dataset.col = col;
+      gridContainer.appendChild(cell);
+      gridCells.push(cell);
+    }
+  }
 
-      // Step 1: Show LIMIT text after 1 second
-      setTimeout(() => {
-        limitText.style.opacity = 1;
-      }, 1000);
+  // Step 2: Show "LIMIT" after 1s
+  setTimeout(() => {
+    document.getElementById('limitText').style.opacity = 1;
+  }, 1000);
 
-      // Step 2: Start hiding tiles in diagonal sequence after 2.5s
-      setTimeout(() => {
-        const diagonals = [
-          [3],
-          [2, 7],
-          [1, 6, 11],
-          [0, 5, 10],
-          [4, 9],
-          [8]
-        ];
-
-        let delay = 0;
-        diagonals.forEach(group => {
-          setTimeout(() => {
-            group.forEach(index => {
-              tiles[index].classList.add("hide");
-            });
-          }, delay);
-          delay += 500;
-        });
-
-        // Step 3: Hide LIMIT text and remove overlay after all tiles gone
-        setTimeout(() => {
-          limitText.style.opacity = 0;
-        }, delay + 500);
-
-        setTimeout(() => {
-          overlay.style.display = "none";
-          limitText.style.display = "none";
-          mainContent.style.visibility = "visible";
-          document.body.classList.add("revealed");
-        }, delay + 1500);
-      }, 2500);
+  // Step 3: Grid fade out sequence (top-right to bottom-left)
+  function getFadeOrder(cells) {
+    return cells.sort((a, b) => {
+      // Top to bottom → sort by row
+      // Right to left → sort by negative col
+      return (
+        parseInt(a.dataset.row) - parseInt(b.dataset.row) ||
+        parseInt(b.dataset.col) - parseInt(a.dataset.col)
+      );
     });
-  </script>
+  }
+
+  setTimeout(() => {
+    const orderedCells = getFadeOrder(gridCells);
+    orderedCells.forEach((cell, index) => {
+      setTimeout(() => {
+        cell.classList.add('fade-out');
+      }, index * 500); // 1 square every 0.5s
+    });
+
+    // Step 4: Remove LIMIT after last cell fades
+    setTimeout(() => {
+      document.getElementById('limitText').style.opacity = 0;
+    }, orderedCells.length * 500 + 500); // after last square + small buffer
+
+    // Step 5: Remove overlay entirely
+    setTimeout(() => {
+      document.getElementById('introOverlay').remove();
+    }, orderedCells.length * 500 + 1500);
+  }, 2000);
+</script>
 
   
 </body>
