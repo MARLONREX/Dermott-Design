@@ -29,24 +29,25 @@
     }
 
     .header {
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 90px;
-      padding: 0px;
-      font-size: 16px;
-      background-color: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1.5px solid white;
-      z-index: 1000;
-      transition: top 0.3s ease, opacity 0.3s ease;
-      color: #3d3d3d;
-      font-family: "Univers", sans-serif;
-    }
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* <- added */
+  padding: 0px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1.5px solid white;
+  z-index: 1000;
+  transition: top 0.3s ease, opacity 0.3s ease;
+  color: #3d3d3d;
+  font-family: "Univers", sans-serif;
+  position: relative; /* <- added */
+}
 
     .header a {
       color: #3d3d3d;
@@ -424,7 +425,10 @@ about-container {
   width: 25px;
   height: 20px;
   cursor: pointer;
-  margin-right: 30px;
+  position: absolute;
+  right: 10px; /* 👈 controls the margin from the right */
+  top: 18px;   /* 👈 adjust vertically inside header */
+  z-index: 1001;
 }
 
 .hamburger span {
