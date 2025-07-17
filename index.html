@@ -174,32 +174,35 @@
       margin: 0 30px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
+.image-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
 
-    .image-box {
-      flex: 1;
-      height: 600px;
-      overflow: hidden;
-      border: 1px solid #ccc;
-      border-radius: 1px;
-      background-color: #FFFFFF;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
+  .image-box {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Makes it a square box */
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-    .image-box img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+.image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes sure images are cropped and fit well */
+  display: block;
+}
 
+  
     .image-box:hover {
       box-shadow: 0 0 15px 3px red;
       transition: box-shadow 0.3s ease;
