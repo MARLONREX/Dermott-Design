@@ -107,17 +107,18 @@
       font-weight: normal;
     }
 
-    .grey-box {
-      width: calc(110% - 100px);
-      height: 1100px;
-      background-size: cover;
-      background-position: center;
-      margin-top: -200px;
-      transition: box-shadow 0.3s, opacity 2s ease-in-out;
-      cursor: pointer;
-      background-color: #f0f0f0;
-      opacity: 0;
-    }
+  .grey-box {
+  width: 100vw;
+  height: auto;
+  aspect-ratio: 16 / 9; /* or adjust to 4 / 3, etc. if preferred */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-top: 0;
+  transition: box-shadow 0.3s, opacity 2s ease-in-out;
+  cursor: pointer;
+  opacity: 0;
+}
 
     .grey-box.visible {
       opacity: 1;
