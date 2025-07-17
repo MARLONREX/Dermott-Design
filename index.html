@@ -40,7 +40,7 @@
   justify-content: space-between; /* <- added */
   padding: 0px;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.05);
+ background-color: white;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1.5px solid white;
@@ -63,7 +63,6 @@
 
 .header a:first-child {
   margin-right: auto;
-  color: #FFFFFF;
   font-weight: bold;
   font-size: 18px;
   user-select: none;
@@ -412,13 +411,21 @@ about-container {
 }
 
 
-
-    /* Base nav layout */
 .nav-links {
   display: flex;
-  gap: 90px;
+  gap: 60px;
+  margin-right: 120px; /* Pushes nav items toward the center-right */
 }
 
+.nav-links a {
+  color: white !important; /* override any gray/black */
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Univers", sans-serif;
+  font-weight: bold;
+}
+
+    
 .hamburger {
   display: none;
   flex-direction: column;
