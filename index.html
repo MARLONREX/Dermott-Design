@@ -7,14 +7,13 @@
   <title>LIMIT DESIGN</title>
   
   <style>
-.logo {
-  font-size: 40px;
-  color: red;
-  margin-left: 0;
-  position: relative;
-  top: -10px; /* optional if you still want it moved up slightly */
-  font-family: "Univers", sans-serif;
-}
+    .logo {
+      width: 25%;
+      height: auto;
+      font-size: 60px;
+      color: #27292B;
+    }
+
     body {
       font-family: "Arial", Sans sarif;
       margin: 200;
@@ -30,25 +29,24 @@
     }
 
     .header {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* <- added */
-  padding: 0px;
-  font-size: 16px;
- background-color: white;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1.5px solid white;
-  z-index: 1000;
-  transition: top 0.3s ease, opacity 0.3s ease;
-  color: #FFFFFF;
-  font-family: "Univers", sans-serif;
-  position: relative; /* <- added */
-}
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 90px;
+      padding: 0px;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1.5px solid white;
+      z-index: 1000;
+      transition: top 0.3s ease, opacity 0.3s ease;
+      color: #3d3d3d;
+      font-family: "Univers", sans-serif;
+    }
 
     .header a {
       color: #3d3d3d;
@@ -60,12 +58,14 @@
       transition: transform 0.3s ease;
     }
 
-.header a:first-child {
-  margin-right: auto;
-  font-weight: bold;
-  font-size: 18px;
-  user-select: none;
-}
+    .header a:first-child {
+      margin-left: 40px;
+      margin-right: auto;
+      color: #3d3d3d;
+      font-weight: bold;
+      font-size: 18px;
+      user-select: none;
+    }
 
     .header a:hover {
       transform: translateY(5px);
@@ -106,17 +106,18 @@
       font-size: 20px;
       font-weight: normal;
     }
-.grey-box {
-  width: 100%;
-  height: 100vh; /* full viewport height */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  transition: box-shadow 0.3s, opacity 2s ease-in-out;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  opacity: 0;
-}
+
+    .grey-box {
+      width: calc(110% - 100px);
+      height: 1100px;
+      background-size: cover;
+      background-position: center;
+      margin-top: -200px;
+      transition: box-shadow 0.3s, opacity 2s ease-in-out;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      opacity: 0;
+    }
 
     .grey-box.visible {
       opacity: 1;
@@ -174,35 +175,32 @@
       margin: 0 30px;
     }
 
-.image-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  width: 100%;
-}
+    .image-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-  .image-box {
-  position: relative;
-  width: 100%;
-  padding-top: 100%; /* Makes it a square box */
-  border: 1px solid #ccc;
-  border-radius: 1px;
-  background-color: #FFFFFF;
-  overflow: hidden;
-  cursor: pointer;
-}
+    .image-box {
+      flex: 1;
+      height: 600px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      border-radius: 1px;
+      background-color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
 
-.image-box img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Makes sure images are cropped and fit well */
-  display: block;
-}
+    .image-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-  
     .image-box:hover {
       box-shadow: 0 0 15px 3px red;
       transition: box-shadow 0.3s ease;
@@ -378,16 +376,7 @@ body {
   background-color: white;
   z-index: -1; /* Puts it behind the text */
 }
-.about-container {
-  width: 100%;
-  height: 200px;
-  background-color: white;
-  padding: 40px 60px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+
     .about-box {
   width: 100%;
   height: 200px;
@@ -398,91 +387,6 @@ body {
   padding-left: 60px;
   box-sizing: border-box;
 }
-about-container {
-  width: 100%;
-  height: 200px;
-  background-color: white;
-  padding: 40px 60px 40px 60px; /* Top, Right, Bottom, Left */
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-.nav-links {
-  display: flex;
-  gap: 60px;
-  margin-right: 200px; /* Pushes nav items toward the center-right */
-}
-
-.nav-links a {
-  color: white !important; /* override any gray/black */
-  text-decoration: none;
-  font-size: 18px;
-  font-family: "Univers", sans-serif;
-  font-weight: bold;
-}
-
-    
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 25px;
-  height: 20px;
-  cursor: pointer;
-  position: absolute;
-  right: 10px; /* 👈 controls the margin from the right */
-  top: 18px;   /* 👈 adjust vertically inside header */
-  z-index: 1001;
-}
-
-.hamburger span {
-  background-color: #3d3d3d; /* same grey as the text */
-  height: 3px;
-  border-radius: 2px;
-  width: 100%;
-  display: block;
-}
-
-
-/* Mobile menu dropdown */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background-color: white;
-  position: absolute;
-  top: 60px;
-  right: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  z-index: 999;
-  padding: 10px 20px;
-}
-
-.mobile-menu a {
-  text-decoration: none;
-  color: #3d3d3d;
-  font-size: 16px;
-  margin: 10px 0;
-  font-family: "Univers", sans-serif;
-}
-
-/* Show hamburger and hide links on smaller screens */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .mobile-menu.show {
-    display: flex;
-  }
-}
-
     
   </style>
 </head>
@@ -491,40 +395,28 @@ about-container {
   <div id="loader-text">LIMIT</div>
 </div>
   
-<div class="header">
- <div class="logo"><a href="index.html">LIMIT</a></div>
-
-  <div class="nav-links">
+  <div class="header">
+    <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
   </div>
 
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-
-<!-- Mobile dropdown menu -->
-<div id="mobileMenu" class="mobile-menu">
-  <a href="#about">About</a>
-  <a href="#work">Work</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-</div>
-
   <div class="white-box"></div>
-<!-- CITY.jpg -->
-<div class="grey-box" data-bg="CITY.jpg"></div>
+  <div class="grey-box" data-bg="CITY.jpg"></div>
 
-<!-- About Section -->
-<div id="about" class="about-container">
-  <div class="section-heading">About</div>
+
+<!-- About Section with white background box behind -->
+<div class="about-wrapper">
+  <div class="divider-box"></div> <!-- White background behind the text -->
+  
+<!-- Blue box containing the About section -->
+<div class="about-box">
+  <div id="about" class="section-heading">About</div>
   <p class="section-subtext">We are LIMIT. Developing designs and drawings, since 2020.</p>
 </div>
+
   
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -536,7 +428,7 @@ about-container {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const imageUrl = greyBox.getAttribute("data-bg");
-              greyBox.style.backgroundImage = `url('${imageUrl}')`;
+              greyBox.style.backgroundImage = url('${imageUrl}');
               greyBox.classList.add("visible");
               observer.unobserve(greyBox);
             }
@@ -641,13 +533,6 @@ about-container {
       loader.remove();
     }, 4000);
   });
-</script>
-
-  <script>
-  function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("show");
-  }
 </script>
   
 </body>
