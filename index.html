@@ -103,14 +103,22 @@ body {
   margin-left: 0;         /* LOGO LEFT SPACING */
 }
 
-/* === NAV LINKS === */
 .nav-links {
-  display: flex;
-  gap: 60px;              /* LINK GAP — spacing between links */
-  margin-left: auto;      /* pushes nav to the right */
-  margin-right: 80px;     /* NAV OFFSET — how far from right */
+  display: none;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  top: 100px; /* match your updated header height */
+  right: 20px;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  padding: 20px 10px;
 }
 
+.nav-links.show {
+  display: flex;
+}
 .nav-links a {
   font-size: 24px;        /* NAV FONT SIZE */
   font-weight: normal;
@@ -420,10 +428,13 @@ body {
   <div id="loading-text">LIMITLESS</div>
 </div>
   
- 
 <div class="header">
-  <div class="logo">LIMIT</div>
+  <div class="logo">
+    <a href="index.html">LIMIT</a>
+  </div>
+
   <div class="hamburger" id="hamburger">&#9776;</div>
+
   <nav class="nav-links" id="nav-links">
     <a href="#about">About</a>
     <a href="#work">Work</a>
@@ -566,6 +577,17 @@ body {
     setTimeout(() => {
       loadingScreen.remove();
     }, 3000);
+  });
+</script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', function () {
+      navLinks.classList.toggle('show');
+    });
   });
 </script>
 
