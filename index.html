@@ -58,14 +58,14 @@
   justify-content: space-between;
   padding: 0 40px;
   background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);              /* doubled blur */
+  -webkit-backdrop-filter: blur(20px);      /* for Safari */
+  height: 100px;                             /* increase vertical size for blur coverage */
   z-index: 1000;
   color: #3d3d3d;
   font-family: "Univers", sans-serif;
   transition: top 0.3s ease, opacity 0.3s ease;
 }
-
 
 /* White line 20px below header */
 .header::after {
@@ -89,13 +89,12 @@
 }
 /* === Desktop nav === */
 .nav-links {
-  position: relative;  /* change from absolute */
+  position: relative;
   display: flex;
   flex-direction: row;
-  gap: 5px; /* spacing between links */
-  margin-right: 30px;  /* shifts entire nav 30px to the left */
+  gap: 25px; /* half of the previous spacing */
+  margin-right: 30px;
 }
-
 /* Individual link styles */
 .nav-links a {
   color: #3d3d3d;
