@@ -321,31 +321,11 @@
     <a href="#contact">Contact</a>
   </div>
 
-  <div class="white-box"></div>
+  <div class="grey-box"></div>
   <div class="logo"><a href="index.html">LIMIT</a></div>
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const greyBox = document.querySelector(".grey-box");
 
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const imageUrl = greyBox.getAttribute("data-bg");
-            greyBox.style.backgroundImage = url('${imageUrl}'); // ✅ fixed backticks
-            greyBox.classList.add("visible");
-            observer.unobserve(greyBox);
-          }
-        });
-      },
-      { rootMargin: "200px" }
-    );
-    
-    observer.observe(greyBox);
-  });
-</script>
 
 
   <br>
