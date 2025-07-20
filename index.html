@@ -421,6 +421,23 @@ body {
   }
 }
 
+
+
+    #animated-line {
+  font-size: 84px; /* 28px × 3 = 84px */
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#animated-line span {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
    
   </style>
 </head>
@@ -496,9 +513,15 @@ body {
 
   <div class="bottom-grey-box">
     <div class="copyright">
-      Curators of Shape & Space
-      <p>Since 2020</p>
-    </div>
+  <div id="animated-line">
+    <span>Curators</span>
+    <span>of</span>
+    <span>Shape</span>
+    <span>&</span>
+    <span>Space</span>
+  </div>
+  <p>Since 2020</p>
+</div>
   </div>
 
   <script defer>
@@ -512,6 +535,26 @@ body {
     });
   </script>
 
+
+
+  
+  <script>
+  window.addEventListener('load', () => {
+    const words = document.querySelectorAll('#animated-line span');
+
+    setTimeout(() => {
+      words.forEach((word, index) => {
+        setTimeout(() => {
+          word.style.opacity = 1;
+        }, index * 500); // 0.5s delay between each word
+      });
+    }, 3000); // Start 3s after page load
+  });
+</script>
+
+
+
+  
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function (e) {
