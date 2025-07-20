@@ -327,6 +327,47 @@
         width: 100%;
       }
     }
+    /* Hide hamburger by default */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  margin-right: 40px;
+  user-select: none;
+}
+
+/* Responsive nav handling */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+  }
+
+  .nav-links a {
+    margin: 15px;
+    font-size: 18px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .header {
+    justify-content: space-between;
+    padding-right: 20px;
+  }
+}
   </style>
 </head>
 
@@ -336,13 +377,23 @@
   <div id="loading-text">LIMITLESS</div>
 </div>
   
+ 
+  
   <div class="header">
-   <div class="logo"><a href="index.html">LIMIT</a></div>
+  <div class="logo"><a href="index.html">LIMIT</a></div>
+
+  <!-- Hamburger icon -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- Nav links -->
+  <nav class="nav-links" id="nav-links">
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
-  </div>
+  </nav>
+</div>
+  
 
   <div class="grey-box"></div>
 <div class="background-city3"></div>
@@ -425,7 +476,13 @@
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
-
+<script>
+  document.getElementById('hamburger').addEventListener('click', function () {
+    const nav = document.getElementById('nav-links');
+    nav.classList.toggle('show');
+  });
+</script>
+  
 <script>
   window.addEventListener('load', () => {
     const loadingScreen = document.getElementById('loading-screen');
