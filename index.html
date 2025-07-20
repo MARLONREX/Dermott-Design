@@ -303,7 +303,7 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const imageUrl = greyBox.getAttribute("data-bg");
-            greyBox.style.backgroundImage = url('${imageUrl}'); // ✅ fixed backticks
+            greyBox.style.backgroundImage = `url('${imageUrl}')`;
             greyBox.classList.add("visible");
             observer.unobserve(greyBox);
           }
