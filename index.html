@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="mystyle.css">
   <title>LIMIT DESIGN</title>
-  
+
   <style>
     .logo {
       width: 25%;
@@ -15,9 +15,11 @@
     }
 
     body {
-      font-family: "Arial", Sans sarif;
+      font-family: "Arial", sans-serif;
       margin: 200;
       padding: 0;
+      background: url('CITY.jpg') no-repeat center center;
+      background-size: cover;
       cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
     }
 
@@ -29,24 +31,24 @@
     }
 
     .header {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 90px;
-  padding: 0px;
-  font-size: 16px;
-  background-color: white; /* changed from rgba(...) to solid white */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1.5px solid white;
-  z-index: 1000;
-  transition: top 0.3s ease, opacity 0.3s ease;
-  color: #3d3d3d;
-  font-family: "Univers", sans-serif;
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 90px;
+      padding: 0;
+      font-size: 16px;
+      background-color: white;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1.5px solid white;
+      z-index: 1000;
+      transition: top 0.3s ease, opacity 0.3s ease;
+      color: #3d3d3d;
+      font-family: "Univers", sans-serif;
+    }
 
     .header a {
       color: #3d3d3d;
@@ -61,9 +63,6 @@
     .header a:first-child {
       margin-left: 40px;
       margin-right: auto;
-      color: #3d3d3d;
-      font-weight: bold;
-      font-size: 18px;
       user-select: none;
     }
 
@@ -85,13 +84,6 @@
       margin-left: 60px;
     }
 
-    .header a:nth-child(2):hover,
-    .header a:nth-child(3):hover,
-    .header a:nth-child(4):hover,
-    .header a:nth-child(5):hover {
-      transform: translateY(5px);
-    }
-
     .Title {
       font-size: 30px;
       margin-left: 40px;
@@ -106,16 +98,17 @@
       font-size: 20px;
       font-weight: normal;
     }
-.grey-box {
-  width: 100%;
-  height: 100vh;
-  background-image: url('CITY.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
-}
+
+    .grey-box {
+      width: 100%;
+      height: 100vh;
+      background-image: url('CITY.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+    }
 
     .featured-text {
       font-size: 60px;
@@ -133,12 +126,12 @@
       width: 7%;
       background: white;
       padding: 10px 40px;
-      box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
       z-index: 1000;
     }
 
-    .footer-text {
-      font-size: 28px;
+    .footer-text,
+    .copyright {
+      font-size: 20px;
       font-family: sans-serif;
       color: white;
       font-weight: bold;
@@ -156,6 +149,14 @@
       margin-top: 40px;
       margin-bottom: 10px;
       scroll-margin-top: 80px;
+    }
+
+    .section-subtext {
+      font-size: 16px;
+      font-family: sans-serif;
+      color: #3d3d3d;
+      margin-left: 60px;
+      margin-bottom: 30px;
     }
 
     .portfolio {
@@ -203,11 +204,10 @@
       width: 100vw;
       height: 100vh;
       background: rgba(0, 0, 0, 0.85);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      display: none;
     }
 
     .lightbox img {
@@ -240,304 +240,10 @@
       box-shadow: 0 0 10px #D3D3D3;
     }
 
-    .copyright {
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      position: absolute;
-      bottom: 10px;
-      left: 20px;
-      opacity: 0.8;
-    }
-
-    .section-subtext {
-      font-size: 16px;
-      font-family: sans-serif;
-      color: #3d3d3d;
-      margin-left: 60px;
-      margin-bottom: 30px;
-    }
-
     @media (max-width: 600px) {
       .wrapper-main {
         width: 100%;
       }
     }
-
-
-/* Divider box below CITY.jpg */
-.divider-box {
-  width: 100%;
-  height: 200px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 40px;
-  box-sizing: border-box;
-}
-
-/* Text inside the divider */
-.divider-content {
-  max-width: 1200px;
-  width: 100%;
-  text-align: left;
-}
-
-.about-heading {
-  font-size: 26px;
-  color: #27292B;
-  margin: 0px;
-  font-weight: bold;
-  font-family: "Arial", sans-serif;
-}
-
-.about-description {
-  font-size: 18px;
-  color: #3d3d3d;
-  font-family: "Arial", sans-serif;
-  margin: 0px;
-}
-
-
-
-
-body {
-  background: url('CITY.jpg') no-repeat center center;
-  background-size: cover;
-  font-family: "Arial", Arial;
-  margin: 200;
-  padding: 15;
-  cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
-}
-
-
-
-/* LOADING SCREEN STYLES */
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: white; /* White screen */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
-  pointer-events: all;
-}
-
-/* "LIMIT" Text Styling */
-#loader-text {
-  color: red;
-  font-size: 60px;
-  font-family: Arial, sans-serif;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-/* Show LIMIT */
-#loader.show-text #loader-text {
-  opacity: 1;
-}
-
-/* Fade out loader */
-#loader.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-
-.about-wrapper {
-  position: relative;
-  z-index: 1;
-  padding: 40px 60px;
-}
-
-.divider-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200px;
-  background-color: white;
-  z-index: -1; /* Puts it behind the text */
-}
-.about-container {
-  width: 100%;
-  height: 200px;
-  background-color: white;
-  padding: 40px 60px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-    .about-box {
-  width: 100%;
-  height: 200px;
-  background-color: #FFFFFF; /* Light blue – adjust as needed */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 60px;
-  box-sizing: border-box;
-}
-about-container {
-  width: 100%;
-  height: 200px;
-  background-color: white;
-  padding: 40px 60px 40px 60px; /* Top, Right, Bottom, Left */
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-    
   </style>
 </head>
-
-<div id="loader">
-  <div id="loader-text">LIMIT</div>
-</div>
-  
-  <div class="header">
-    <div class="logo"><a href="index.html">LIMIT</a></div>
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-  </div>
-
-  <div class="white-box"></div>
-<!-- CITY.jpg -->
-<div class="grey-box"></div>
-  
-<!-- About Section -->
-<div id="about" class="about-container">
-  <div class="section-heading">About</div>
-  <p class="section-subtext">We are LIMIT. Developing designs and drawings, since 2020.</p>
-</div>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const header = document.querySelector(".header");
-      const greyBox = document.querySelector(".grey-box");
-
-      const observer = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const imageUrl = greyBox.getAttribute("data-bg");
-              greyBox.style.backgroundImage = url('${imageUrl}');
-              greyBox.classList.add("visible");
-              observer.unobserve(greyBox);
-            }
-          });
-        },
-        { rootMargin: "200px" }
-      );
-      observer.observe(greyBox);
-    });
-  </script>
-
-  <br>
-  <div id="work">
-    <br><br><br><br>
-
-
-
-    <br><br><br><br>
-
-    <div id="featured-text" class="section-heading">Work</div>
-    <div class="portfolio">
-      <div class="image-row">
-        <div class="image-box"><img src="WB5.png" alt="Image 1" /></div>
-        <div class="image-box"><img src="PWB4.jpg" alt="Image 2" /></div>
-        <div class="image-box"><img src="PWB2.jpg" alt="Image 3" /></div>
-      </div>
-      <div class="image-row">
-        <div class="image-box"><img src="WB3.png" alt="Image 4" /></div>
-        <div class="image-box"><img src="PWB3.jpg" alt="Image 5" /></div>
-        <div class="image-box"><img src="PWB1.jpg" alt="Image 6" /></div>
-      </div>
-    </div>
-
-    <!-- News Section -->
-    <div id="news" class="section-heading">News</div>
-    <p class="section-subtext">Stuff here.</p>
-
-    <!-- Contact Section -->
-    <div id="contact" class="section-heading">Contact</div>
-    <p class="section-subtext">Stuff here.</p>
-  </div>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <img id="lightbox-img" src="" alt="Zoomed Image">
-  </div>
-
-  <div class="bottom-grey-box">
-    <div class="copyright">
-      Curators of Shape & Space
-      <p>Since 2020</p>
-    </div>
-  </div>
-
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      const elements = document.querySelectorAll('.hidden');
-      elements.forEach(el => {
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, 300);
-      });
-    });
-  </script>
-
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }
-      });
-    });
-  </script>
-
-  <br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br><br>
-
-
- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const loader = document.getElementById("loader");
-
-    // 1 second: show the LIMIT text
-    setTimeout(() => {
-      loader.classList.add("show-text");
-    }, 1000);
-
-    // 2 seconds: begin fading out loader
-    setTimeout(() => {
-      loader.classList.add("fade-out");
-    }, 2000);
-
-    // 4 seconds: remove loader from DOM
-    setTimeout(() => {
-      loader.remove();
-    }, 4000);
-  });
-</script>
-  
-</body>
-</html>
