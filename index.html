@@ -52,7 +52,56 @@
 
 
 
+.hamburger {
+  width: 30px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  user-select: none;
+  z-index: 1100;
+}
 
+/* New dropdown style */
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 1001;
+  flex-direction: column;
+}
+
+.nav-dropdown a {
+  padding: 10px;
+  text-align: left;
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+}
+
+.nav-dropdown a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show class */
+.nav-dropdown.show {
+  display: flex;
+}
+
+
+
+
+
+
+
+
+    
 
 
 
@@ -417,15 +466,30 @@ body {
  
 <div class="header">
   <div class="logo">LIMIT</div>
-  <div class="hamburger" id="hamburger">&#9776;</div>
-  <nav class="nav-links" id="nav-links">
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<div class="hamburger" id="hamburger">&#9776;</div>
+<div class="nav-dropdown" id="nav-dropdown">
+  <a href="#about">About</a>
+  <a href="#work">Work</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
 </div>
 
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function () {
+    const dropdown = document.getElementById('nav-dropdown');
+    dropdown.classList.toggle('show');
+  });
+
+  // Optional: close when clicking outside
+  document.addEventListener('click', function (e) {
+    const dropdown = document.getElementById('nav-dropdown');
+    const hamburger = document.getElementById('hamburger');
+    if (!dropdown.contains(e.target) && !hamburger.contains(e.target)) {
+      dropdown.classList.remove('show');
+    }
+  });
+</script>
 
 
   <div class="grey-box"></div>
