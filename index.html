@@ -91,11 +91,18 @@
 
 /* Nav links */
 .nav-links {
-  flex: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0; /* anchor the container to the right */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row;
+  gap: 0; /* no gap, so you control spacing manually */
 }
+.nav-links a:nth-child(1) { margin-right: 200px; } /* About */
+.nav-links a:nth-child(2) { margin-right: 150px; } /* Work */
+.nav-links a:nth-child(3) { margin-right: 100px; } /* News */
+.nav-links a:nth-child(4) { margin-right: 50px; }  /* Contact */
 
 .nav-links a {
   flex: 1;
