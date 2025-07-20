@@ -56,21 +56,18 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 180px;
-  padding: 0px;
-  font-size: 16px;
+  justify-content: space-between;
+  padding: 0 40px;
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 1000;
-  transition: top 0.3s ease, opacity 0.3s ease;
   color: #3d3d3d;
   font-family: "Univers", sans-serif;
-  /* Removed border-bottom here */
-  position: fixed;
+  transition: top 0.3s ease, opacity 0.3s ease;
 }
 
-/* NEW: Add white line 20px below header */
+/* White line 20px below header */
 .header::after {
   content: "";
   position: absolute;
@@ -81,51 +78,71 @@
   background-color: white;
 }
 
-    .header a {
-      color: #3d3d3d;
-      text-decoration: none;
-      font-size: 18px;
-      font-family: "Univers", sans-serif;
-      font-weight: bold;
-      margin-left: 80px;
-      transition: transform 0.3s ease;
-    }
-
-    .header a:first-child {
-  margin-left: 40px;
-  margin-top: 20px;
-  margin-right: 100px;
-  color: #3d3d3d;
-  font-weight: bold;
+/* Logo */
+.logo {
   font-size: 24px;
+  font-weight: bold;
+  user-select: none;
+  color: #3d3d3d;
+  font-family: "Univers", sans-serif;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.nav-links a {
+  color: #3d3d3d;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Univers", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover {
+  transform: translateY(5px);
+}
+
+/* Hamburger menu (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
   user-select: none;
 }
 
+/* Responsive for smaller screens */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    padding: 20px 10px;
+  }
 
-    .header a:hover {
-      transform: translateY(5px);
-    }
+  .nav-links.show {
+    display: flex;
+  }
 
-    .header a:nth-child(2),
-    .header a:nth-child(3),
-    .header a:nth-child(4),
-    .header a:nth-child(5) {
-      margin-left: 80px;
-      text-decoration: underline;
-      text-underline-offset: 5px;
-      transition: transform 0.3s ease;
-    }
+  .hamburger {
+    display: block;
+  }
 
-    .header a:nth-child(5) {
-      margin-left: 60px;
-    }
-
-    .header a:nth-child(2):hover,
-    .header a:nth-child(3):hover,
-    .header a:nth-child(4):hover,
-    .header a:nth-child(5):hover {
-      transform: translateY(5px);
-    }
+  .header {
+    padding-right: 20px;
+  }
+}
 
     .Title {
       font-size: 30px;
@@ -379,8 +396,8 @@
   
  
   
-  <div class="header">
-  <div class="logo"><a href="index.html">LIMIT</a></div>
+<div class="header">
+  <div class="logo">LIMIT</div>
 
   <!-- Hamburger icon -->
   <div class="hamburger" id="hamburger">&#9776;</div>
@@ -482,6 +499,8 @@
     nav.classList.toggle('show');
   });
 </script>
+
+
   
 <script>
   window.addEventListener('load', () => {
