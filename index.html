@@ -8,7 +8,32 @@
   <title>LIMIT DESIGN</title>
   <style>
 
+    /* Loading screen container */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 2s ease;
+  pointer-events: none;
+}
 
+/* LIMIT text */
+#loading-text {
+  font-size: 64px;
+  font-weight: bold;
+  color: red;
+  opacity: 0;
+  transition: opacity 1s ease;
+  font-family: "Arial", sans-serif;
+}
 .logo {
   width: 25%;
   height: auto;
@@ -283,7 +308,8 @@
 
 <body>
 
-
+   <div id="loading-screen">
+  </div>
 
   <div class="header">
     <div class="logo"><a href="index.html">LIMIT</a></div>
@@ -374,6 +400,26 @@
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
 
+<script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      const loadingText = document.getElementById('loading-text');
+
+      loadingText.style.opacity = '1';
+
+      setTimeout(() => {
+        loadingText.style.opacity = '0';
+      }, 2000);
+
+      setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+      }, 1000);
+
+      setTimeout(() => {
+        loadingScreen.remove();
+      }, 3000);
+    });
+  </script>
 
 
   
