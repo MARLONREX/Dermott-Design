@@ -134,17 +134,16 @@
     }
 
 .grey-box {
-  width: 100vw; /* full screen width */
-  height: 800px; /* fixed height */
-  background-image: url('CITY.jpg'); /* directly load the image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #f0f0f0;
-  opacity: 1; /* always visible */
-  position: relative;
-  z-index: 0;
-}
+    .grey-box {
+      width: 100%;
+      height: 800px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #f0f0f0;
+      opacity: 0;
+      transition: box-shadow 0.3s, opacity 2s ease-in-out;
+    }
     .grey-box.visible {
   opacity: 1;
 }
@@ -309,22 +308,41 @@
 
 <body>
 
-  <div id="loading-screen">
-  <div id="loading-text">LIMIT</div>
-</div>
-  
+   <div id="loading-screen">
+    <div id="loading-text">LIMIT</div>
+  </div>
+
   <div class="header">
-   <div class="logo"><a href="index.html">LIMIT</a></div>
+    <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
   </div>
 
-  <div class="grey-box"></div>
-  <div class="logo"><a href="index.html">LIMIT</a></div>
+  <div class="grey-box" data-bg="CITY.jpg"></div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const greyBox = document.querySelector(".grey-box");
 
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const imageUrl = greyBox.getAttribute("data-bg");
+              greyBox.style.backgroundImage = `url('${imageUrl}')`;
+              greyBox.classList.add("visible");
+              observer.unobserve(greyBox);
+            }
+          });
+        },
+        { rootMargin: "200px" }
+      );
+
+      observer.observe(greyBox);
+    });
+  </script>
 
 
 
@@ -404,29 +422,26 @@
   <br><br><br><br><br><br><br><br><br><br>
 
 <script>
-  window.addEventListener('load', () => {
-    const loadingScreen = document.getElementById('loading-screen');
-    const loadingText = document.getElementById('loading-text');
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      const loadingText = document.getElementById('loading-text');
 
-    // Step 1: Fade in LIMIT (1s)
-    loadingText.style.opacity = '1';
+      loadingText.style.opacity = '1';
 
-    // Step 2: Wait 2s total (1s fade in + 1s hold), then fade out LIMIT
-    setTimeout(() => {
-      loadingText.style.opacity = '0';
-    }, 2000);
+      setTimeout(() => {
+        loadingText.style.opacity = '0';
+      }, 2000);
 
-    // Step 3: Start fading out the white background at 1s, finish at 3s
-    setTimeout(() => {
-      loadingScreen.style.opacity = '0';
-    }, 1000);
+      setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+      }, 1000);
 
-    // Step 4: Remove the loading screen entirely after 3s
-    setTimeout(() => {
-      loadingScreen.remove();
-    }, 3000);
-  });
-</script>
+      setTimeout(() => {
+        loadingScreen.remove();
+      }, 3000);
+    });
+  </script>
+
 
   
 </body>
