@@ -365,37 +365,45 @@ body {
       margin-bottom: 30px;
     }
 
-   /* === RESPONSIVE NAVIGATION === */
-@media (max-width: 900px) {
-  .hamburger {
-    display: block;
-    font-size: 28px;
-    cursor: pointer;
-    margin-right: 40px;
-    user-select: none;
-  }
+    @media (max-width: 600px) {
+      .wrapper-main {
+        width: 100%;
+      }
+    }
+    /* Hide hamburger by default */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  margin-right: 40px;
+  user-select: none;
+}
 
+/* Responsive nav handling */
+@media (max-width: 900px) {
   .nav-links {
     display: none;
     flex-direction: column;
+    background: white;
     position: absolute;
-    top: 80px; /* same as header height */
+    top: 60px;
     right: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 20px 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1001;
+  }
+
+  .nav-links a {
+    margin: 15px;
+    font-size: 18px;
   }
 
   .nav-links.show {
     display: flex;
   }
 
-  .nav-links a {
-    padding: 10px 20px;
-    font-size: 18px;
-    text-align: right;
+  .hamburger {
+    display: block;
   }
 
   .header {
@@ -403,8 +411,6 @@ body {
     padding-right: 20px;
   }
 }
-
-
   </style>
 </head>
 
@@ -426,7 +432,27 @@ body {
   </nav>
 </div>
 
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
 
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+
+  
+
+<!-- Hamburger toggle script -->
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+  
 
   <div class="grey-box"></div>
 <div class="background-city3"></div>
