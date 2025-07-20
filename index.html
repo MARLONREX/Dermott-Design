@@ -67,6 +67,7 @@
   transition: top 0.3s ease, opacity 0.3s ease;
 }
 
+
 /* White line 20px below header */
 .header::after {
   content: "";
@@ -80,6 +81,7 @@
 
 /* Logo */
 .logo {
+  flex: 1; /* Left third */
   font-size: 24px;
   font-weight: bold;
   user-select: none;
@@ -89,12 +91,15 @@
 
 /* Nav links */
 .nav-links {
+  flex: 2;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 60px;
 }
 
 .nav-links a {
+  flex: 1;
+  text-align: center;
   color: #3d3d3d;
   text-decoration: underline;
   text-underline-offset: 5px;
