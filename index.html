@@ -103,44 +103,22 @@ body {
   margin-left: 0;         /* LOGO LEFT SPACING */
 }
 
-@media (max-width: 900px) {
-  .hamburger {
-    display: block;
-    font-size: 24px; /* smaller icon */
-    cursor: pointer;
-    margin-right: 20px;
-    user-select: none;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 80px;
-    right: 10px;  /* pull away from screen edge slightly */
-    width: 200px; /* smaller width */
-    background: rgba(255, 255, 255, 0.95);
-    padding: 10px 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    z-index: 1001;
-    border-radius: 4px; /* optional: for a cleaner shape */
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-links a {
-    padding: 8px 15px; /* smaller padding */
-    font-size: 16px;   /* smaller font */
-    text-align: left;
-  }
-
-  .header {
-    justify-content: space-between;
-    padding-right: 20px;
-  }
+/* === NAV LINKS === */
+.nav-links {
+  display: flex;
+  gap: 60px;              /* LINK GAP — spacing between links */
+  margin-left: auto;      /* pushes nav to the right */
+  margin-right: 80px;     /* NAV OFFSET — how far from right */
 }
+
+.nav-links a {
+  font-size: 24px;        /* NAV FONT SIZE */
+  font-weight: normal;
+  color: #000;
+  text-decoration: none;
+  user-select: none;
+}
+
 /* === HAMBURGER ICON === */
 .hamburger {
   display: none;
@@ -152,7 +130,7 @@ body {
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 100px) {
+@media (max-width: 600px) {
   .nav-links {
     display: none;
     flex-direction: column;
