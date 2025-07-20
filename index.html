@@ -87,18 +87,16 @@
   color: #3d3d3d;
   font-family: "Univers", sans-serif;
 }
-
-/* Nav links */
+/* === Desktop nav === */
 .nav-links {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 30px; /* shifted 30px to the left (was 0 before) */
+  position: relative;  /* change from absolute */
   display: flex;
   flex-direction: row;
-  gap: 50px; /* set 50px spacing between links */
+  gap: 50px; /* spacing between links */
+  margin-right: 30px;  /* shifts entire nav 30px to the left */
 }
 
+/* Individual link styles */
 .nav-links a {
   color: #3d3d3d;
   text-decoration: underline;
