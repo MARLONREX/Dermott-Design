@@ -307,74 +307,6 @@
         width: 100%;
       }
     }
-
-    /* ===== Navigation + Hamburger ===== */
-.nav-links {
-  display: flex;
-  gap: 80px;
-}
-
-.hamburger {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  margin-left: auto; /* Push to the right */
-  margin-right: 20px;
-  user-select: none;
-  color: #3d3d3d;
-}
-/* Mobile menu hidden by default */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  right: 20px;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-  padding: 10px 20px;
-}
-
-.mobile-menu a {
-  text-decoration: none;
-  color: #3d3d3d;
-  padding: 10px 0;
-  font-family: "Univers", sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  border-bottom: 1px solid #eee;
-}
-
-/* Show hamburger and hide full nav on small screens */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .mobile-menu {
-    display: none;
-  }
-
-  .mobile-menu.show {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 20px;
-    background-color: white;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-  }
-}
-
   </style>
 </head>
 
@@ -384,29 +316,13 @@
   <div id="loading-text">LIMIT</div>
 </div>
   
-<div class="header">
-  <div class="logo"><a href="index.html">LIMIT</a></div>
-
-  <!-- Full nav (hidden on small screens) -->
-  <nav class="nav-links">
+  <div class="header">
+   <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
-  </nav>
-
-<div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-  &#9776;
-</div>
-
-  <!-- Dropdown menu (shown when hamburger is clicked) -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#about" onclick="toggleMenu()">About</a>
-    <a href="#work" onclick="toggleMenu()">Work</a>
-    <a href="#news" onclick="toggleMenu()">News</a>
-    <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
-</div>
 
   <div class="white-box"></div>
   <div class="logo"><a href="index.html">LIMIT</a></div>
@@ -421,7 +337,7 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const imageUrl = greyBox.getAttribute("data-bg");
-            greyBox.style.backgroundImage = `url('${imageUrl}')`; // ✅ fixed backticks
+            greyBox.style.backgroundImage = url('${imageUrl}'); // ✅ fixed backticks
             greyBox.classList.add("visible");
             observer.unobserve(greyBox);
           }
@@ -533,14 +449,6 @@
       loadingScreen.remove();
     }, 3000);
   });
-</script>
-
-
-  <script>
-  function toggleMenu() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('show');
-  }
 </script>
 
   
