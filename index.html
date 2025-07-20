@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+#<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-7">
@@ -7,13 +7,39 @@
   <link rel="stylesheet" href="mystyle.css">
   <title>LIMIT DESIGN</title>
   <style>
-    .logo {
-      width: 25%;
-      height: auto;
-      font-size: 60px;
-      color: #27292B;
-    }
 
+    /* Loading screen container */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 2s ease;
+  pointer-events: none;
+}
+
+/* LIMIT text */
+#loading-text {
+  font-size: 64px;
+  font-weight: bold;
+  color: red;
+  opacity: 0;
+  transition: opacity 1s ease;
+  font-family: "Arial", sans-serif;
+}
+.logo {
+  width: 25%;
+  height: auto;
+  font-size: 60px;
+  color: #27292B;
+}
     body {
   font-family: "Arial", sans-serif; /* ✅ fixed 'Sans sarif' typo */
   margin: 0;                        /* ✅ fixed invalid margin */
@@ -108,17 +134,16 @@
     }
 
 .grey-box {
-  width: 100vw; /* full screen width */
-  height: 800px; /* fixed height */
-  background-image: url('CITY.jpg'); /* directly load the image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #f0f0f0;
-  opacity: 1; /* always visible */
-  position: relative;
-  z-index: 0;
-}
+    .grey-box {
+      width: 100%;
+      height: 800px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #f0f0f0;
+      opacity: 0;
+      transition: box-shadow 0.3s, opacity 2s ease-in-out;
+    }
     .grey-box.visible {
   opacity: 1;
 }
@@ -283,6 +308,9 @@
 
 <body>
 
+   <div id="loading-screen">
+  </div>
+
   <div class="header">
     <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="#about">About</a>
@@ -291,30 +319,10 @@
     <a href="#contact">Contact</a>
   </div>
 
-  <div class="white-box"></div>
   <div class="grey-box" data-bg="CITY.jpg"></div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const greyBox = document.querySelector(".grey-box");
+ 
 
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const imageUrl = greyBox.getAttribute("data-bg");
-            greyBox.style.backgroundImage = `url('${imageUrl}')`;
-            greyBox.classList.add("visible");
-            observer.unobserve(greyBox);
-          }
-        });
-      },
-      { rootMargin: "200px" }
-    );
-    
-    observer.observe(greyBox);
-  });
-</script>
 
 
   <br>
@@ -391,6 +399,27 @@
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br>
+
+<script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      const loadingText = document.getElementById('loading-text');
+
+      loadingText.style.opacity = '1';
+
+      setTimeout(() => {
+        loadingText.style.opacity = '0';
+      }, 2000);
+
+      setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+      }, 1000);
+
+      setTimeout(() => {
+        loadingScreen.remove();
+      }, 3000);
+    });
+  </script>
 
 
   
