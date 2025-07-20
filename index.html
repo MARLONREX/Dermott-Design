@@ -107,18 +107,17 @@
       font-weight: normal;
     }
 
-    .grey-box {
-  width: 100%; /* ✅ Don't go beyond the screen */
-  height: 100vh; /* ✅ Full screen height */
+.grey-box {
+  width: 100vw; /* full screen width */
+  height: 800px; /* fixed height */
+  background-image: url('CITY.jpg'); /* directly load the image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #f0f0f0;
-  transition: box-shadow 0.3s, opacity 2s ease-in-out;
-  opacity: 0;
-  pointer-events: none; /* Optional: don't interfere with other content */
-  z-index: -1; /* Push behind content if needed */
+  opacity: 1; /* always visible */
   position: relative;
+  z-index: 0;
 }
     .grey-box.visible {
   opacity: 1;
