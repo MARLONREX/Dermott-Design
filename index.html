@@ -155,17 +155,19 @@
       box-shadow: 0 0 15px #D3D3D3;
     }
 
-    .background-city3 {
+.background-city3 {
   background-image: url('CITY3.png');
+  background-size: 100% auto;  /* Keeps full width but auto height */
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center top;
   position: absolute;
-  top: 1050px; /* 800px from CITY2 + 250px gap */
+  top: 1050px;
   left: 0;
   width: 100%;
-  height: 1600px; /* Adjust based on Work + News + Contact height */
+  height: auto;
+  min-height: 1600px;  /* Ensure it still spans enough height */
   z-index: -1;
-  opacity: 0.1; /* Optional: make it subtly sit behind */
+  opacity: 0.1;
 }
     .featured-text {
       font-size: 60px;
