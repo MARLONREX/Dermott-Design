@@ -34,18 +34,15 @@
   transition: opacity 1s ease;
   font-family: "Arial", sans-serif;
 }
-    
-    /* === Logo in top-left corner === */
-/* Customize size and font here */
-.logo a {
-  font-family: "Arial", sans-serif;   /* 👈 Change font here */
-  font-size: 64px;                    /* 👈 Change size here */
+    .logo {
+  width: 25%;
+  height: auto;
+  font-size: 60px;
   font-weight: bold;
-  color: red;                         /* 👈 Change color here */
-  text-decoration: none;
-  user-select: none;
+  color: red;     
+  font-family: "Arial", sans-serif;   /* 👈 Change font here */
+  color: #27292B;
 }
-
     body {
   font-family: "Arial", sans-serif; /* ✅ fixed 'Sans sarif' typo */
   margin: 0;                        /* ✅ fixed invalid margin */
@@ -65,7 +62,6 @@
       top: 0px;
       left: 0px;
       width: 100%;
-      height: 30px;
       display: flex;
       align-items: center;
       gap: 90px;
@@ -329,7 +325,8 @@
   </div>
 
   <div class="white-box"></div>
-  <div class="grey-box" data-bg="CITY.jpg"></div>
+  <div class="logo"><a href="index.html">LIMIT</a></div>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
