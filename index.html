@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-7">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="mystyle.css">
   <title>LIMIT DESIGN</title>
@@ -110,7 +110,11 @@
 
 
 
-
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 
 /* === HEADER === */
 .header {
@@ -151,13 +155,13 @@
 /* === NAV LINKS === */
 .nav-links {
   display: flex;
-  gap: 60px;              /* spacing between links */
-  margin-left: auto;      /* push nav to the right */
-  margin-right: 80px;     /* space from right */
+  gap: 60px;              /* LINK GAP — spacing between links */
+  margin-left: auto;      /* pushes nav to the right */
+  margin-right: 80px;     /* NAV OFFSET — how far from right */
 }
 
 .nav-links a {
-  font-size: 24px;
+  font-size: 24px;        /* NAV FONT SIZE */
   font-weight: normal;
   color: #000;
   text-decoration: none;
@@ -167,45 +171,26 @@
 /* === HAMBURGER ICON === */
 .hamburger {
   display: none;
-  font-size: 20px;         /* ⬅️ You can change this to resize */
+  font-size: 28px;
   color: #000;
   cursor: pointer;
   margin-left: auto;
   z-index: 1100;
 }
 
-    .hamburger {
-  display: none;
-  font-size: 20px; /* ✅ Change this value to control icon size */
-  color: #000;
-  cursor: pointer;
-  margin-left: auto;
-  z-index: 1100;
-}
-
-@media (max-width: 600px) {
-  .hamburger {
-    display: block;
-    margin-right: 40px;
-    user-select: none;
-  }
-}
-    
-/* === RESPONSIVE NAVIGATION === */
+/* === RESPONSIVE === */
 @media (max-width: 600px) {
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 80px;              /* same as header height */
+    top: 80px;              /* matches header height */
     right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
     width: 100%;
     padding: 10px 0;
     gap: 20px;
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
+    margin-right: 0;
   }
 
   .nav-links.show {
@@ -214,10 +199,17 @@
 
   .nav-links a {
     padding: 10px 20px;
-    font-size: 18px;
     text-align: right;
   }
 
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    margin-left: 0;
+  }
+}
 
 
 
@@ -422,7 +414,15 @@
       margin-bottom: 30px;
     }
 
-
+   /* === RESPONSIVE NAVIGATION === */
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+    font-size: 28px;
+    cursor: pointer;
+    margin-right: 40px;
+    user-select: none;
+  }
 
   .nav-links {
     display: none;
