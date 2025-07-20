@@ -93,15 +93,26 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 0; /* anchor the container to the right */
+  right: 30px; /* shifted 30px to the left (was 0 before) */
   display: flex;
   flex-direction: row;
-  gap: 0; /* no gap, so you control spacing manually */
+  gap: 50px; /* set 50px spacing between links */
 }
-.nav-links a:nth-child(1) { margin-right: 30px; } /* About */
-.nav-links a:nth-child(2) { margin-right: 30px; } /* Work */
-.nav-links a:nth-child(3) { margin-right: 30px; } /* News */
-.nav-links a:nth-child(4) { margin-right: 20px; }  /* Contact */
+
+.nav-links a {
+  color: #3d3d3d;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Univers", sans-serif;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+.nav-links a:nth-child(1) { margin-right: 30px; }
+.nav-links a:nth-child(2) { margin-right: 30px; }
+.nav-links a:nth-child(3) { margin-right: 30px; }
+.nav-links a:nth-child(4) { margin-right: 20px; }
 
 .nav-links a {
   flex: 1;
