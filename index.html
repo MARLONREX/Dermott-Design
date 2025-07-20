@@ -52,56 +52,7 @@
 
 
 
-.hamburger {
-  width: 30px;
-  height: 40px;
-  font-size: 20px;
-  line-height: 40px;
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  user-select: none;
-  z-index: 1100;
-}
 
-/* New dropdown style */
-.nav-dropdown {
-  display: none;
-  position: absolute;
-  top: 80px;
-  right: 20px;
-  width: 150px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  z-index: 1001;
-  flex-direction: column;
-}
-
-.nav-dropdown a {
-  padding: 10px;
-  text-align: left;
-  text-decoration: none;
-  color: #000;
-  font-size: 16px;
-}
-
-.nav-dropdown a:hover {
-  background-color: #f0f0f0;
-}
-
-/* Show class */
-.nav-dropdown.show {
-  display: flex;
-}
-
-
-
-
-
-
-
-
-    
 
 
 
@@ -152,22 +103,44 @@ body {
   margin-left: 0;         /* LOGO LEFT SPACING */
 }
 
-/* === NAV LINKS === */
-.nav-links {
-  display: flex;
-  gap: 60px;              /* LINK GAP — spacing between links */
-  margin-left: auto;      /* pushes nav to the right */
-  margin-right: 80px;     /* NAV OFFSET — how far from right */
-}
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+    font-size: 24px; /* smaller icon */
+    cursor: pointer;
+    margin-right: 20px;
+    user-select: none;
+  }
 
-.nav-links a {
-  font-size: 24px;        /* NAV FONT SIZE */
-  font-weight: normal;
-  color: #000;
-  text-decoration: none;
-  user-select: none;
-}
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 10px;  /* pull away from screen edge slightly */
+    width: 200px; /* smaller width */
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 1001;
+    border-radius: 4px; /* optional: for a cleaner shape */
+  }
 
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 8px 15px; /* smaller padding */
+    font-size: 16px;   /* smaller font */
+    text-align: left;
+  }
+
+  .header {
+    justify-content: space-between;
+    padding-right: 20px;
+  }
+}
 /* === HAMBURGER ICON === */
 .hamburger {
   display: none;
@@ -179,7 +152,7 @@ body {
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 600px) {
+@media (max-width: 100px) {
   .nav-links {
     display: none;
     flex-direction: column;
@@ -466,30 +439,15 @@ body {
  
 <div class="header">
   <div class="logo">LIMIT</div>
-<div class="hamburger" id="hamburger">&#9776;</div>
-<div class="nav-dropdown" id="nav-dropdown">
-  <a href="#about">About</a>
-  <a href="#work">Work</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
+  <div class="hamburger" id="hamburger">&#9776;</div>
+  <nav class="nav-links" id="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </div>
 
-
-<script>
-  document.getElementById('hamburger').addEventListener('click', function () {
-    const dropdown = document.getElementById('nav-dropdown');
-    dropdown.classList.toggle('show');
-  });
-
-  // Optional: close when clicking outside
-  document.addEventListener('click', function (e) {
-    const dropdown = document.getElementById('nav-dropdown');
-    const hamburger = document.getElementById('hamburger');
-    if (!dropdown.contains(e.target) && !hamburger.contains(e.target)) {
-      dropdown.classList.remove('show');
-    }
-  });
-</script>
 
 
   <div class="grey-box"></div>
