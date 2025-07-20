@@ -119,15 +119,7 @@ body {
   user-select: none;
 }
 
-/* Base hamburger styles */
-.hamburger {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  margin-left: auto;
-  user-select: none;
-  z-index: 1100;
-}
+
 
 /* Responsive dropdown behavior */
 @media (max-width: 900px) {
@@ -156,9 +148,6 @@ body {
     display: flex;
   }
 
-  .hamburger {
-    display: block;
-  }
 
   .header {
     justify-content: space-between;
@@ -366,6 +355,72 @@ body {
       margin-bottom: 30px;
     }
 
+
+
+
+
+
+
+
+
+    /* === Hamburger Button === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  width: 100%;
+  display: block;
+}
+
+/* === Mobile Nav Menu === */
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 80px; /* below the header */
+    right: 0;
+    width: 100%;
+    padding: 20px 0;
+    gap: 20px;
+    z-index: 1001;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-links a {
+    font-size: 20px;
+    padding: 10px 20px;
+    text-align: right;
+    color: black;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
+    right: 20px;
+  }
+
+  .header {
+    justify-content: space-between;
+  }
+}
+
    
   </style>
 </head>
@@ -379,7 +434,11 @@ body {
  
 <div class="header">
   <div class="logo">LIMIT</div>
-  <div class="hamburger" id="hamburger">&#9776;</div>
+  <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
   <nav class="nav-links" id="nav-links">
     <a href="#about">About</a>
     <a href="#work">Work</a>
