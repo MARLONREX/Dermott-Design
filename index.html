@@ -35,12 +35,16 @@
   font-family: "Arial", sans-serif;
 }
     
-    .logo {
-      width: 25%;
-      height: auto;
-      font-size: 60px;
-      color: #27292B;
-    }
+    /* === Logo in top-left corner === */
+/* Customize size and font here */
+.logo a {
+  font-family: "Arial", sans-serif;   /* 👈 Change font here */
+  font-size: 64px;                    /* 👈 Change size here */
+  font-weight: bold;
+  color: red;                         /* 👈 Change color here */
+  text-decoration: none;
+  user-select: none;
+}
 
     body {
   font-family: "Arial", sans-serif; /* ✅ fixed 'Sans sarif' typo */
@@ -316,7 +320,7 @@
 </div>
   
   <div class="header">
-    <div class="logo"><a href="index.html">LIMIT</a></div>
+   <div class="logo"><a href="index.html">LIMIT</a></div>
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#news">News</a>
