@@ -102,12 +102,17 @@
     .grey-box {
       width: 100%;
       height: 100vh;
-      background-image: url('CITY.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
       margin: 0;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .grey-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .featured-text {
@@ -247,3 +252,17 @@
     }
   </style>
 </head>
+<body>
+  <div class="header">
+    <div class="logo"><a href="#">LIMIT</a></div>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="grey-box">
+    <img src="CITY.jpg" alt="City Background">
+  </div>
+</body>
+</html>
