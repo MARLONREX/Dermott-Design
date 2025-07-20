@@ -128,12 +128,15 @@ body {
 }
 
 /* === HAMBURGER ICON === */
+/* === HAMBURGER ICON (smaller and bottom-right positioning) === */
 .hamburger {
   display: none;
-  font-size: 28px;
-  color: #000;
+  font-size: 14px; /* 🔽 HALF SIZE */
   cursor: pointer;
+  margin-right: 20px;
   margin-left: auto;
+  user-select: none;
+  position: relative;
   z-index: 1100;
 }
 
@@ -389,27 +392,47 @@ body {
 
 /* Responsive nav handling */
 @media (max-width: 900px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-  }
+ 
 
-  .nav-links a {
-    margin: 15px;
-    font-size: 18px;
-  }
+/* === NAVIGATION MENU DROPDOWN === */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 10px); /* 🔽 slightly below hamburger */
+  right: 0;
+  background: white;
+  width: max-content;
+  min-width: 160px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: hidden;
+  max-width: 90vw; /* ✅ prevent overflow on mobile */
+}
 
-  .nav-links.show {
-    display: flex;
-  }
+/* Dropdown text links */
+.nav-links a {
+  font-size: 16px;
+  font-weight: normal;
+  color: #000;
+  text-decoration: none;
+  user-select: none;
+  padding: 8px 12px;
+  white-space: nowrap;
+  text-align: right;
+}
 
+/* Show state */
+.nav-links.show {
+   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* === RESPONSIVE HANDLING === */
+@media (max-width: 900px) {
   .hamburger {
     display: block;
   }
@@ -417,6 +440,10 @@ body {
   .header {
     justify-content: space-between;
     padding-right: 20px;
+  }
+
+  .nav-links {
+    right: 10px; /* ✅ Prevent dropdown from going off-screen */
   }
 }
   </style>
@@ -430,8 +457,9 @@ body {
   
 <div class="header">
   <div class="logo">
-    <a href="index.html">LIMIT</a>
+    LIMIT
   </div>
+</div>
 
   <div class="hamburger" id="hamburger">&#9776;</div>
 
