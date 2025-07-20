@@ -1,268 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="mystyle.css">
-  <title>LIMIT DESIGN</title>
-
-  <style>
-    .logo {
-      width: 25%;
-      height: auto;
-      font-size: 60px;
-      color: #27292B;
-    }
-
-    body {
-      font-family: "Arial", sans-serif;
-      margin: 200;
-      padding: 0;
-      background: url('CITY.jpg') no-repeat center center;
-      background-size: cover;
-      cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
-    }
-
-    .header a:hover,
-    .grey-box:hover,
-    .featured-grey-box:hover,
-    .bottom-grey-box:hover {
-      cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20"%3E%3Ccircle cx="10" cy="10" r="10" fill="%23333" /%3E%3C/svg%3E'), auto;
-    }
-
+<htmlxxxxxx>
+  <head>
+    <meta charset="utf-7">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Dermott Design</title>
+    <style>
+        
     .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 90px;
-      padding: 0;
-      font-size: 16px;
-      background-color: white;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1.5px solid white;
-      z-index: 1000;
-      transition: top 0.3s ease, opacity 0.3s ease;
-      color: #3d3d3d;
-      font-family: "Univers", sans-serif;
-    }
+            margin-top: 0px;
+            position: fixed;
+            top: 50px;
+            left: 130px;
+            width: 80px; /* Adjust as needed */
+            height: 30px;
+            z-index: 1100; /* Ensures it stays above other elements */
+        }
+        
+        .logo {
+            width: 25%; /* Shrinks the image to one-quarter of its original size */
+            height: auto; /* Maintains aspect ratio */
+            font-size: 35px;
+            color: #27292B;
+        }
 
-    .header a {
-      color: #3d3d3d;
-      text-decoration: none;
-      font-size: 18px;
-      font-family: "Univers", sans-serif;
-      font-weight: bold;
-      margin-left: 80px;
-      transition: transform 0.3s ease;
-    }
+        body {
+            font-family: "Arial", Arial;
+            margin: 200;
+            padding: 15;
+            cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
+        }
 
-    .header a:first-child {
-      margin-left: 40px;
-      margin-right: auto;
-      user-select: none;
-    }
+        /* Large Cursor for Hover */
+        .header a:hover,
+        .grey-box:hover,
+        .featured-grey-box:hover,
+        .bottom-grey-box:hover {
+            cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20"%3E%3Ccircle cx="10" cy="10" r="10" fill="%23333" /%3E%3C/svg%3E'), auto;
+        }
 
-    .header a:hover {
-      transform: translateY(5px);
-    }
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0); /* transparent */
+    border: 3px solid white;
+    z-index: 1000;
+    height: 60px;
+    backdrop-filter: blur(6px); /* Optional: for a frosted-glass effect */
+    -webkit-backdrop-filter: blur(6px); /* Safari support */
+}
 
-    .header a:nth-child(2),
-    .header a:nth-child(3),
-    .header a:nth-child(4),
-    .header a:nth-child(5) {
-      margin-left: 80px;
-      text-decoration: underline;
-      text-underline-offset: 5px;
-      transition: transform 0.3s ease;
-    }
+        .header a {
+            color: #333;
+            text-decoration: none;
+            padding: 15px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
 
-    .header a:nth-child(5) {
-      margin-left: 60px;
-    }
 
-    .Title {
-      font-size: 30px;
-      margin-left: 40px;
-      font-weight: normal;
-      margin-top: 80px;
-      color: #212121;
-    }
 
-    .subgraph {
-      margin-left: 840px;
-      margin-right: 50px;
-      font-size: 20px;
-      font-weight: normal;
-    }
 
-    .grey-box {
-      width: 100%;
-      height: 100vh;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
 
-    .grey-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+        .header a:first-child { 
+    margin-left: 40px; 
+    margin-right: auto; 
+    color: #575757; 
+}
 
-    .featured-text {
-      font-size: 60px;
-      color: #27292B;
-      margin-left: 60px;
-      margin-top: 30px;
-      position: relative;
-      transition: all 0.3s;
-    }
+.header {
+    display: flex;
+    gap: 90px;
+}
 
-    .sticky {
-      position: fixed;
-      top: 50px;
-      left: 0;
-      width: 7%;
-      background: white;
-      padding: 10px 40px;
-      z-index: 1000;
-    }
+.header a:nth-child(2) {
+    margin-left: 80px; 
+}
 
-    .footer-text,
-    .copyright {
-      font-size: 20px;
-      font-family: sans-serif;
-      color: white;
-      font-weight: bold;
-      position: absolute;
-      bottom: 10px;
-      left: 20px;
-      opacity: 0.8;
-    }
+.header a:nth-child(3) {
+    margin-left: 80px; 
+}
 
-    .section-heading {
-      font-size: 28px;
-      font-family: sans-serif;
-      color: #3d3d3d;
-      margin-left: 60px;
-      margin-top: 40px;
-      margin-bottom: 10px;
-      scroll-margin-top: 80px;
-    }
+.header a:nth-child(4) {
+    margin-left: 80px;
+}
 
-    .section-subtext {
-      font-size: 16px;
-      font-family: sans-serif;
-      color: #3d3d3d;
-      margin-left: 60px;
-      margin-bottom: 30px;
-    }
+.header a:nth-child(5) {
+    margin-left: 80px;
+}
 
-    .portfolio {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      margin: 0 30px;
-    }
+.header a:nth-child(2),
+.header a:nth-child(3),
+.header a:nth-child(4),
+.header a:nth-child(5) {
+    text-decoration: underline;
+    text-underline-offset: 5px; /* Moves underline 5px below */
+    transition: transform 0.3s ease; /* Smooth animation */
+}
 
-    .image-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
+.header a:nth-child(2):hover,
+.header a:nth-child(3):hover,
+.header a:nth-child(4):hover,
+.header a:nth-child(5):hover {
+    transform: translateY(5px); /* Moves the link 5px down on hover */
+}
+.white-box {
+    width: 100%;
+    height: 20px; /* Approx. 5 lines in height */
+    background-color: white;
+    margin-top: 60px; /* Ensures it sits right below the fixed header */
+    margin-left: 40px;
+}
+        .Title {
+            font-size: 40px; /* Doubled from 20px */
+            margin-left: 30px;
+            font-weight: normal;
+            margin-top: 80px; /* Adjusted for fixed header */
+            color: #393b3e;
+        }
 
-    .image-box {
-      flex: 1;
-      height: 600px;
-      overflow: hidden;
-      border: 1px solid #ccc;
-      border-radius: 1px;
-      background-color: #FFFFFF;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
+        .subgraph {
+            margin-left: 30px;
+            font-size: 20px;
+            font-weight: normal;
+            margin-right: 300px;
+            color: #393b3e;
 
-    .image-box img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+        }
 
-    .image-box:hover {
-      box-shadow: 0 0 15px 3px red;
-      transition: box-shadow 0.3s ease;
-    }
 
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
 
-    .lightbox img {
-      max-width: 80vw;
-      max-height: 80vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
 
-    .footer-nav {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      grid-template-rows: repeat(3, auto);
-      gap: 15px 40px;
-      position: absolute;
-      bottom: 30px;
-      right: 200px;
-    }
+        :root {
+  --margin: 30px;
+}
 
-    .footer-nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      padding: 5px 10px;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .footer-nav a:hover {
-      background-color: #6b6b6b;
-      box-shadow: 0 0 10px #D3D3D3;
-    }
+body {
+  background: #fdfdfd;
+  padding: var(--margin);
+  font-family: sans-serif;
+}
 
-    @media (max-width: 600px) {
-      .wrapper-main {
-        width: 100%;
-      }
-    }
-  </style>
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin);
+}
+
+/* Row styling */
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--margin);
+}
+
+/* Portrait boxes (A4 = 210 x 297) — keep height consistent */
+.box.portrait {
+  flex: 1;
+  aspect-ratio: 210 / 297;
+  height: calc((100vw - (4 * var(--margin))) * 297 / (3 * 210)); /* auto-resizes */
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+/* Landscape boxes (A4 = 297 x 210) — keep full ratio */
+.box.landscape {
+  flex: 1;
+  aspect-ratio: 297 / 210;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+/* Image styling */
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.bottom-grey-box:hover {
+    box-shadow: 0 0 15px #D3D3D3;
+}
+
+/* Footer navigation container */
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* Creates 2 columns */
+    grid-template-rows: repeat(3, auto); /* Creates 3 rows */
+    gap: 15px 40px; /* Space between grid items */
+    position: absolute;
+    bottom: 30px; /* Positions it towards the bottom */
+    right: 200px; /* 200px from the right margin */
+}
+
+/* Footer navigation links */
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.footer-nav a:hover {
+    background-color: #6b6b6b;
+    box-shadow: 0 0 10px #D3D3D3;
+}
+
+/* Copyright text positioned in the lower-left corner */
+.copyright {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    opacity: 0.8;
+}
+
+
+
+
+
+
+    </style>
 </head>
-<body>
-  <div class="header">
-    <div class="logo"><a href="#">LIMIT</a></div>
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-  </div>
 
-  <div class="grey-box">
-    <img src="CITY.jpg" alt="City Background">
-  </div>
-</body>
+
+<body>
+<div class="header">
+        <div class="logo">
+        <a href="index.html">Dermott Design</a>
+        </div>
+        <a href="DDABOUT.html">About</a>
+        <a href="DDWORK.html">Work</a>
+        <a href="DDNEWS.html">News</a>
+        <a href="DDPARTNERS.html">Contact</a>
+    </div>
+  
+
+<div class="white-box"></div>
+</div>
+    <div class="Title">
+        ArchTech . Art Museum . Nantes
+    </div>
+<br>
+<div class="subgraph">
+    My first tech project was about the École des Beaux-Arts on the island of Nantes Saint-Nazaire, a museum and art school located on an island in Nantes. It’s built from concrete, but what really stands out is the steel and translucent glass façade — like a shell wrapped around the inner structure. Inside, it's got exhibition spaces, teaching rooms, offices, and even a lecture theatre. The design feels modern but also kind of hidden and layered, which I thought was super interesting.
+
+ 
+</div>
+<br>
+<br>
+    <div class="portfolio">
+
+
+                <!-- Row of 2 Landscape A4 Boxes -->
+                <div class="row row-landscape">
+                    <div class="box landscape"><img src="za.jpg" alt="Landscape 1" /></div>
+                    <div class="box landscape"><img src="zb (2).jpg" alt="Landscape 2" /></div>
+                  </div>
+
+
+        <!-- Row of 3 Portrait A4 Boxes -->
+        <div class="row row-portrait">
+          <div class="box portrait"><img src="zc.jpg" alt="Portrait 1" /></div>
+          <div class="box portrait"><img src="zx.jpg" alt="Portrait 2" /></div>
+          <div class="box portrait"><img src="zz.jpg" alt="Portrait 3" /></div>
+        </div>
+    
+
+    
+
+      </div>
+
+
+    <div class="bottom-grey-box">
+        <!-- Copyright text in the lower-left corner -->
+        <div class="copyright">© Marlon MacDermott 2025</div>
+
+    </div>
+<script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+        const elements = document.querySelectorAll('.hidden');
+        elements.forEach(el => {
+            setTimeout(() => {
+                el.classList.add('visible');
+            }, 300);
+        });
+    });
+    function loadImage(event, imgId) {
+        const img = document.getElementById(imgId);
+        img.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+    </body>
 </html>
