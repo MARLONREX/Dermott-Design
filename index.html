@@ -316,12 +316,13 @@
 
 .hamburger {
   display: none;
-  font-size: 32px;
+  font-size: 28px;
   cursor: pointer;
+  margin-left: auto; /* Push to the right */
   margin-right: 20px;
   user-select: none;
+  color: #3d3d3d;
 }
-
 /* Mobile menu hidden by default */
 .mobile-menu {
   display: none;
@@ -358,11 +359,19 @@
 
   .mobile-menu {
     display: none;
-    background: white;
   }
 
   .mobile-menu.show {
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
   }
 }
 
@@ -386,10 +395,9 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Hamburger icon (visible on small screens) -->
-  <div class="hamburger" onclick="toggleMenu()">
-    &#9776;
-  </div>
+<div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+  &#9776;
+</div>
 
   <!-- Dropdown menu (shown when hamburger is clicked) -->
   <div class="mobile-menu" id="mobile-menu">
