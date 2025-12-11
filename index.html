@@ -438,6 +438,66 @@ body {
   transition: opacity 0.5s ease;
 }
 
+    .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.chat-box {
+    height: 400px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+textarea {
+    flex: 1;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-message {
+    background: #e3f2fd;
+    margin-left: 20px;
+}
+
+.ai-message {
+    background: #f5f5f5;
+    margin-right: 20px;
+}
    
   </style>
 </head>
@@ -470,9 +530,19 @@ body {
 <div class="background-city3"></div>
 
 
-
-
-
+    <!-- AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  -->
+ <div class="container">
+        <h1>Local AI Chat</h1>
+        <div class="chat-box" id="chatBox">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="input-area">
+            <textarea id="userInput" placeholder="Type your question here..."></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  -->
   <br>
   <div id="work">
 
@@ -677,6 +747,66 @@ body {
   });
 </script>
 
-  
+    <!-- AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  -->
+  // You'll need to get an API key from DeepSeek
+  <script>
+const API_KEY = 'your-api-key-here';
+const API_URL = 'https://api.deepseek.com/v1/chat/completions'; // Check DeepSeek's actual API endpoint
+
+async function sendMessage() {
+    const userInput = document.getElementById('userInput');
+    const chatBox = document.getElementById('chatBox');
+    const question = userInput.value.trim();
+    
+    if (!question) return;
+    
+    // Add user message to chat
+    addMessage('user', question);
+    userInput.value = '';
+    
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${API_KEY}`
+            },
+            body: JSON.stringify({
+                model: 'deepseek-chat', // Check the correct model name
+                messages: [{ role: 'user', content: question }],
+                stream: false
+            })
+        });
+        
+        const data = await response.json();
+        const aiResponse = data.choices[0].message.content;
+        
+        // Add AI response to chat
+        addMessage('ai', aiResponse);
+        
+    } catch (error) {
+        console.error('Error:', error);
+        addMessage('ai', 'Sorry, there was an error processing your request.');
+    }
+}
+
+function addMessage(sender, text) {
+    const chatBox = document.getElementById('chatBox');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+    messageDiv.textContent = text;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Allow sending with Enter key (Shift+Enter for new line)
+document.getElementById('userInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+    </script>
+      <!-- AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  -->
 </body>
 </html>
