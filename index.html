@@ -543,21 +543,64 @@ button:hover {
     </div>
     <script src="script.js"></script>
     <!-- AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  -->
-<!-- ✅ PUT THE SCRIPT RIGHT HERE, IMMEDIATELY AFTER THE CHAT HTML -->
-<script>
-// Your AI JavaScript code goes here
-const API_KEY = 'your-api-key';
-const API_URL = 'https://api.deepseek.com/v1/chat/completions';
+  <script>
+const API_KEY = 'sk-0053ff12c56142b1a2266c15f00f19da';
+const API_URL = 'https://api.deepseek.com/v1/chat/completions'; // Check DeepSeek's actual API endpoint
 
 async function sendMessage() {
-    // ... your function code
+    const userInput = document.getElementById('userInput');
+    const chatBox = document.getElementById('chatBox');
+    const question = userInput.value.trim();
+    
+    if (!question) return;
+    
+    // Add user message to chat
+    addMessage('user', question);
+    userInput.value = '';
+    
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${API_KEY}`
+            },
+            body: JSON.stringify({
+                model: 'deepseek-chat', // Check the correct model name
+                messages: [{ role: 'user', content: question }],
+                stream: false
+            })
+        });
+        
+        const data = await response.json();
+        const aiResponse = data.choices[0].message.content;
+        
+        // Add AI response to chat
+        addMessage('ai', aiResponse);
+        
+    } catch (error) {
+        console.error('Error:', error);
+        addMessage('ai', 'Sorry, there was an error processing your request.');
+    }
 }
-// ... rest of your AI functions
-</script>
 
-<!-- Then continue with your existing content -->
-<br>
-<div id="work"> 
+function addMessage(sender, text) {
+    const chatBox = document.getElementById('chatBox');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+    messageDiv.textContent = text;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Allow sending with Enter key (Shift+Enter for new line)
+document.getElementById('userInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+    </script>
 
 
 
