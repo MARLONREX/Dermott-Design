@@ -530,8 +530,8 @@ button:hover {
 <div class="background-city3"></div>
 
 
-    <!-- AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  -->
- <div class="container">
+ <!-- AI Chat Interface -->
+    <div class="container">
         <h1>Local AI Chat</h1>
         <div class="chat-box" id="chatBox">
             <!-- Messages will appear here -->
@@ -541,67 +541,96 @@ button:hover {
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-    <script src="script.js"></script>
-    <!-- AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  AIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAI  -->
-  <script>
-const API_KEY = 'sk-0053ff12c56142b1a2266c15f00f19da';
-const API_URL = 'https://api.deepseek.com/v1/chat/completions'; // Check DeepSeek's actual API endpoint
 
-async function sendMessage() {
-    const userInput = document.getElementById('userInput');
-    const chatBox = document.getElementById('chatBox');
-    const question = userInput.value.trim();
-    
-    if (!question) return;
-    
-    // Add user message to chat
-    addMessage('user', question);
-    userInput.value = '';
-    
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
-            },
-            body: JSON.stringify({
-                model: 'deepseek-chat', // Check the correct model name
-                messages: [{ role: 'user', content: question }],
-                stream: false
-            })
-        });
+    <script>
+    // AI Configuration - ADD YOUR API KEY HERE
+    const API_KEY = 'sk-fa9a1d669ee044a78f77f1244675a800'; // Replace with your actual API key
+    const API_URL = 'https://api.deepseek.com/v1/chat/completions';
+
+    async function sendMessage() {
+        const userInput = document.getElementById('userInput');
+        const question = userInput.value.trim();
         
-        const data = await response.json();
-        const aiResponse = data.choices[0].message.content;
+        if (!question) {
+            alert('Please enter a question');
+            return;
+        }
         
-        // Add AI response to chat
-        addMessage('ai', aiResponse);
+        // Add user message to chat
+        addMessage('user', question);
+        userInput.value = '';
         
-    } catch (error) {
-        console.error('Error:', error);
-        addMessage('ai', 'Sorry, there was an error processing your request.');
+        // Show loading indicator
+        const loadingMessage = addMessage('ai', 'Thinking...');
+        
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: 'deepseek-chat',
+                    messages: [{ role: 'user', content: question }],
+                    max_tokens: 500,
+                    temperature: 0.7,
+                    stream: false
+                })
+            });
+            
+            // Check if response is OK
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status} - ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            
+            // Check if response has the expected structure
+            if (data.choices && data.choices[0] && data.choices[0].message) {
+                const aiResponse = data.choices[0].message.content;
+                
+                // Remove loading message and add AI response
+                loadingMessage.remove();
+                addMessage('ai', aiResponse);
+            } else {
+                throw new Error('Unexpected API response format');
+            }
+            
+        } catch (error) {
+            console.error('Error details:', error);
+            
+            // Remove loading message and show error
+            loadingMessage.remove();
+            addMessage('ai', `Error: ${error.message}. Check console for details.`);
+        }
     }
-}
 
-function addMessage(sender, text) {
-    const chatBox = document.getElementById('chatBox');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${sender}-message`;
-    messageDiv.textContent = text;
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-// Allow sending with Enter key (Shift+Enter for new line)
-document.getElementById('userInput').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
+    function addMessage(sender, text) {
+        const chatBox = document.getElementById('chatBox');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}-message`;
+        messageDiv.textContent = text;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        
+        // Return the message element so we can remove it if needed
+        return messageDiv;
     }
-});
+
+    // Allow sending with Enter key (Shift+Enter for new line)
+    document.getElementById('userInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    // Clear chat function (optional - you can add a clear button later)
+    function clearChat() {
+        document.getElementById('chatBox').innerHTML = '';
+    }
     </script>
-
 
 
 
